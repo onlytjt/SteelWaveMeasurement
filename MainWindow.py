@@ -3,6 +3,7 @@
 import sys
 import cv2
 import Camera # write by tjt
+
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from MyUI import Ui_MainWindow # write by tjt
@@ -35,21 +36,26 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.label_title.setFont(QFont("Roman times", 20, QFont.Bold))
 
     def initCamera(self):
-        self.ins = Camera.CameraInterface()
-        self.ins.openCamera()
-        self.ins.setCameraFeature()
+        ROIRANGE = 200
+        self.ci = Camera.CameraInterface()  # 获取界面中的相机接口
+        self.ci.initCamera()
+        self.ci.initAttribute()
+        self.ci.getOneFrame()
+        ip = ImageProcessing.ImageProcessing(self.ci.imgData)
+        ip.doHoughTrans()
+        self.ci.setROI(roiRange=ROIRANGE, offset=ip.C-ROIRANGE/2)
+
 
     def onTimerShowImage(self):
         # 采集图像
-        self.ins.captureFrame()
+        self.ci.getOneFrame()
         # 显示原始图像
-        img = q2n.gray2qimage(self.ins.moreUsefulImgData)
-        img = img.scaled(400, 300, Qt.KeepAspectRatio)
+        img = q2n.gray2qimage(self.ci.imgData)
+        img = img.scaled(1226, 100, Qt.KeepAspectRatio)
         self.label_image.setPixmap(QPixmap.fromImage(img))
-
         # 进行图像处理并显示canny边缘图像
-        ip = ImageProcessing.ImageProcessing(self.ins.moreUsefulImgData)
-        img = cv2.resize(ip.cannyImg, (800, 600), cv2.INTER_AREA)
+        ip = ImageProcessing.ImageProcessing(self.ci.imgData)
+        img = cv2.resize(ip.cannyImg, (1226, 100), cv2.INTER_AREA)
         img = q2n.gray2qimage(img)
         self.label_canny.setPixmap(QPixmap.fromImage(img))
         (top, bottom) = ip.getP2PByHough()
@@ -57,14 +63,13 @@ class MainUI(QMainWindow, Ui_MainWindow):
         # 进行精度控制，格式转换
         top = float("%0.1f" % top)
         bottom = float("%0.1f" % bottom)
-        pp = 4000/964 * (top - bottom)
+        pp = 4000/2056 * (top - bottom)
         pp = float("%0.2f" % pp)
-        strDis = str(pp) + "///"
-        strDis = strDis + str(top) + "&&" + str(bottom)
+        strDis = "top:" + str(top) + ". bottom:" + str(bottom) + ". And P-P:" + str(top-bottom)
+        strDis = strDis + ". And result is:" + str(pp)
         self.edit_big_height.setText(QString(strDis))
 
     def onClickedBtnAutoTest(self):
-        print "asdasd"
         self.btn_auto_test.setText(u"正在测量中。。。")
         inputImg = cv2.imread("./res/21.bmp", 0)
         img = q2n.gray2qimage(inputImg)
@@ -84,6 +89,6 @@ class MainUI(QMainWindow, Ui_MainWindow):
     def onClickedBtnCloseSystem(self):
         self.timerShowImage.stop()
         print "Timer timerShowImage has been closed"
-        self.ins.closeCamera()
+        self.ci.closeCamera()
         print "Camera has been closed"
         QCoreApplication.instance().quit()

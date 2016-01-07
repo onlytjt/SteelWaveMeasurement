@@ -18,15 +18,15 @@ class CameraInterface:
         self.HEIGHT = 2056
 
     def initCamera(self):
-        self.vimba = Vimba()
-        self.vimba.startup()  # 启用vimba驱动程序,获取vimba的句柄
-        print "Vimba run successfully! Version: ", self.vimba.getVersion()  # 打印当前使用vimba版本信息
-        system = self.vimba.getSystem()
+        vimba = Vimba()
+        vimba.startup()  # 启用vimba驱动程序
+        print "Vimba run successfully! Version: ", vimba.getVersion()  # 打印当前使用vimba版本信息
+        system = vimba.getSystem()
         system.runFeatureCommand("GeVDiscoveryAllOnce")  # enabling discovery for GigE cameras
         time.sleep(0.2)
-        cameraIds = self.vimba.getCameraIds()
+        cameraIds = vimba.getCameraIds()
         print "Available cameras: ", cameraIds  # 列出所有可用相机的ID
-        self.camera = self.vimba.getCamera(cameraIds[0])  # 得到相机的相机句柄，用于后续各种操作
+        self.camera = vimba.getCamera(cameraIds[0])  # 得到相机的相机句柄，用于后续各种操作
         self.camera.openCamera()
         print "Camera: ", cameraIds, "has opened successfully!"
 
@@ -71,7 +71,7 @@ class CameraInterface:
         self.vimba.shutdown()
 
 def main():
-    ROIRANGE = 200
+    ROIRANGE = 100
     ci = CameraInterface()
     ci.initCamera()
     ci.initAttribute()

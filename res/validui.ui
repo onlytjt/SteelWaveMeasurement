@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1315</width>
-    <height>811</height>
+    <width>1305</width>
+    <height>765</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,22 +43,22 @@
    <widget class="QLabel" name="label_image">
     <property name="geometry">
      <rect>
-      <x>880</x>
-      <y>140</y>
-      <width>400</width>
-      <height>300</height>
+      <x>30</x>
+      <y>170</y>
+      <width>1226</width>
+      <height>100</height>
      </rect>
     </property>
     <property name="text">
-     <string>图像显示区域400*300</string>
+     <string>图像显示区域1226*100</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_auto_test">
     <property name="geometry">
      <rect>
-      <x>1080</x>
-      <y>609</y>
-      <width>191</width>
+      <x>940</x>
+      <y>590</y>
+      <width>301</width>
       <height>71</height>
      </rect>
     </property>
@@ -69,8 +69,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>876</x>
-      <y>576</y>
+      <x>46</x>
+      <y>506</y>
       <width>48</width>
       <height>16</height>
      </rect>
@@ -85,9 +85,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>930</x>
-      <y>576</y>
-      <width>133</width>
+      <x>100</x>
+      <y>506</y>
+      <width>531</width>
       <height>20</height>
      </rect>
     </property>
@@ -95,8 +95,8 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>876</x>
-      <y>604</y>
+      <x>46</x>
+      <y>534</y>
       <width>48</width>
       <height>16</height>
      </rect>
@@ -111,9 +111,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>930</x>
-      <y>604</y>
-      <width>133</width>
+      <x>100</x>
+      <y>534</y>
+      <width>531</width>
       <height>20</height>
      </rect>
     </property>
@@ -121,8 +121,8 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>876</x>
-      <y>632</y>
+      <x>46</x>
+      <y>562</y>
       <width>48</width>
       <height>16</height>
      </rect>
@@ -137,9 +137,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>930</x>
-      <y>632</y>
-      <width>133</width>
+      <x>100</x>
+      <y>562</y>
+      <width>531</width>
       <height>20</height>
      </rect>
     </property>
@@ -147,8 +147,8 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>876</x>
-      <y>660</y>
+      <x>46</x>
+      <y>590</y>
       <width>48</width>
       <height>16</height>
      </rect>
@@ -163,9 +163,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>930</x>
-      <y>660</y>
-      <width>133</width>
+      <x>100</x>
+      <y>590</y>
+      <width>531</width>
       <height>20</height>
      </rect>
     </property>
@@ -173,9 +173,9 @@
    <widget class="QLineEdit" name="lineEdit_5">
     <property name="geometry">
      <rect>
-      <x>1071</x>
-      <y>571</y>
-      <width>133</width>
+      <x>950</x>
+      <y>690</y>
+      <width>191</width>
       <height>20</height>
      </rect>
     </property>
@@ -183,10 +183,10 @@
    <widget class="QPushButton" name="btn_start_system">
     <property name="geometry">
      <rect>
-      <x>889</x>
-      <y>540</y>
-      <width>75</width>
-      <height>23</height>
+      <x>940</x>
+      <y>510</y>
+      <width>151</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
@@ -196,10 +196,10 @@
    <widget class="QPushButton" name="btn_close_system">
     <property name="geometry">
      <rect>
-      <x>970</x>
-      <y>540</y>
-      <width>75</width>
-      <height>23</height>
+      <x>1100</x>
+      <y>510</y>
+      <width>141</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
@@ -209,21 +209,21 @@
    <widget class="QLabel" name="label_canny">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>130</y>
-      <width>800</width>
-      <height>600</height>
+      <x>30</x>
+      <y>340</y>
+      <width>1226</width>
+      <height>100</height>
      </rect>
     </property>
     <property name="text">
-     <string>边缘显示区域800*600</string>
+     <string>边缘显示区域1226*100</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_savefile">
     <property name="geometry">
      <rect>
-      <x>1210</x>
-      <y>570</y>
+      <x>1160</x>
+      <y>690</y>
       <width>75</width>
       <height>23</height>
      </rect>

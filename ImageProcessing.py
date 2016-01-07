@@ -41,7 +41,6 @@ class ImageProcessing:
     # 对已经模糊并二值化的图像进行霍夫变换
     # 提取图像中的直线，并保存直线A, B, C参数
     def doHoughTrans(self):
-
         img = self.binaryBlurImg
         lines = cv2.HoughLines(img, 1, np.pi/180, 120)
         result = self.cannyImg.copy()
@@ -63,9 +62,9 @@ class ImageProcessing:
         self.A = k
         self.B = -1
         self.C = b
-        # print "A=", self.A
-        # print "B=", self.B
-        # print "C=", self.C
+        print "A=", self.A
+        print "B=", self.B
+        print "C=", self.C
 
 
 
@@ -93,8 +92,8 @@ class ImageProcessing:
                         disTop = tmp
                     elif tmp < disBottom:
                         disBottom = tmp
-        # print "disTop=", disTop
-        # print "disBottom", disBottom
+        print "disTop=", disTop
+        print "disBottom", disBottom
         # time2 = datetime.datetime.now()
         # print "Processing time:", time2 - time1
         # print "PP pixels is:", disTop - disBottom
