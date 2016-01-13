@@ -18,5 +18,6 @@
 3. 更新上位机，显示区域为1226*100
 
 下阶段：
-1.研究python中的hashmap，用来存储image的ndarray对象
-2.研究ctypes，电机驱动
+1.认真研究像素和um之间的转换关系，重新看ImageProcessing部分代码
+2.研究python中的hashmap，用来存储image的ndarray对象
+3.研究ctypes，电机驱动

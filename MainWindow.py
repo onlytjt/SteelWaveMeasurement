@@ -36,50 +36,51 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.label_title.setFont(QFont("Roman times", 20, QFont.Bold))
 
     def initCamera(self):
-        ROIRANGE = 200
+        self.ROIRANGE = 300
         self.ci = Camera.CameraInterface()  # 获取界面中的相机接口
         self.ci.initCamera()
         self.ci.initAttribute()
         self.ci.getOneFrame()
         ip = ImageProcessing.ImageProcessing(self.ci.imgData)
-        ip.doHoughTrans()
-        self.ci.setROI(roiRange=ROIRANGE, offset=ip.C-ROIRANGE/2)
+        if ip.doHoughTrans():
+            self.ci.setROI(roiRange=self.ROIRANGE, offset=ip.C-self.ROIRANGE/2)
+        else:
+            self.ci.setROI(roiRange=self.ROIRANGE)
+
 
 
     def onTimerShowImage(self):
         # 采集图像
-        self.ci.getOneFrame()
+        oriImg = self.ci.getOneFrame()
         # 显示原始图像
-        img = q2n.gray2qimage(self.ci.imgData)
-        img = img.scaled(1226, 100, Qt.KeepAspectRatio)
+        img = q2n.gray2qimage(oriImg)
+        img = img.scaled(1226, self.ROIRANGE/2, Qt.KeepAspectRatio)
         self.label_image.setPixmap(QPixmap.fromImage(img))
-        # 进行图像处理并显示canny边缘图像
-        ip = ImageProcessing.ImageProcessing(self.ci.imgData)
-        img = cv2.resize(ip.cannyImg, (1226, 100), cv2.INTER_AREA)
-        img = q2n.gray2qimage(img)
-        self.label_canny.setPixmap(QPixmap.fromImage(img))
-        (top, bottom) = ip.getP2PByHough()
 
+        # 进行图像处理并显示canny边缘图像
+        ip = ImageProcessing.ImageProcessing(oriImg)
+        if not ip.doHoughTrans():  # 经过霍夫变换，检测图像没有钢丝情况
+            self.label_canny.setPixmap(QPixmap.fromImage(img))
+            return
+        else:  # 有钢丝情况，首先显示Canny算子的边缘
+            # img = q2n.gray2qimage(ip.cannyImg)
+            # img = img.scaled(1226, self.ROIRANGE/2, Qt.KeepAspectRatio)  # 此方法显示，会造成边缘断续
+            img = cv2.resize(ip.cannyImg, (1226, self.ROIRANGE), cv2.INTER_NEAREST)
+            img = q2n.gray2qimage(img)  # 此方法显示会将边缘放大，但实际处理的数据不会改变
+            self.label_canny.setPixmap(QPixmap.fromImage(img))
+
+        (top, bottom) = ip.getP2PByHough()  # 获取波峰波谷像素值
         # 进行精度控制，格式转换
         top = float("%0.1f" % top)
         bottom = float("%0.1f" % bottom)
-        pp = 4000/2056 * (top - bottom)
+        pp = 8000.0/2056.0 * (top - bottom)
         pp = float("%0.2f" % pp)
         strDis = "top:" + str(top) + ". bottom:" + str(bottom) + ". And P-P:" + str(top-bottom)
         strDis = strDis + ". And result is:" + str(pp)
         self.edit_big_height.setText(QString(strDis))
 
     def onClickedBtnAutoTest(self):
-        self.btn_auto_test.setText(u"正在测量中。。。")
-        inputImg = cv2.imread("./res/21.bmp", 0)
-        img = q2n.gray2qimage(inputImg)
-        img = img.scaled(400, 300, Qt.KeepAspectRatio)
-        self.label_image.setPixmap(QPixmap.fromImage(img))
-
-        ip = ImageProcessing.ImageProcessing(inputImg)
-        img = cv2.resize(ip.cannyImg, (800, 600), cv2.INTER_NEAREST)
-        img = q2n.gray2qimage(img)
-        self.label_canny.setPixmap(QPixmap.fromImage(img))
+        self.btn_auto_test.setText(u"正在测量中。请稍候。。")
 
 
     def onClickedBtnStartSystem(self):

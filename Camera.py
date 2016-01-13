@@ -61,7 +61,7 @@ class CameraInterface:
         moreUsefulImgData = np.ndarray(buffer=self.frame0.getBufferByteData(),
                                    dtype=np.uint8,
                                    shape=(self.frame0.height, self.frame0.width))  # numpy的ndarray进行方便进行处理
-        print "moreUsefulImgData shape:", moreUsefulImgData.shape
+        # print "moreUsefulImgData shape:", moreUsefulImgData.shape
         self.camera.endCapture()
         self.camera.revokeAllFrames()  # 获取图像完毕后，清理内存
         self.imgData = moreUsefulImgData
@@ -71,7 +71,7 @@ class CameraInterface:
         self.vimba.shutdown()
 
 def main():
-    ROIRANGE = 200
+    ROIRANGE = 300
     ci = CameraInterface()
     ci.initCamera()
     ci.initAttribute()
