@@ -17,8 +17,8 @@ class ImageProcessing:
     def __init__(self, image):
         self.originImg = image
         self.blurImg = cv2.GaussianBlur(self.originImg, (3, 3), 0)
-        ret, self.binaryBlurImg = cv2.threshold(self.blurImg, 78, 255, cv2.THRESH_BINARY_INV)
-        self.cannyImg = cv2.Canny(self.blurImg, 50, 150) # 图像正放
+        ret, self.binaryBlurImg = cv2.threshold(self.blurImg, 125, 255, cv2.THRESH_BINARY_INV)
+        self.cannyImg = cv2.Canny(self.binaryBlurImg, 50, 150) # 图像正放
 
     # 直接遍历canny边缘图，计算整幅图像的最高和最低
     def directGetP2P(self):
@@ -152,12 +152,12 @@ class ImageProcessing:
 
 def main():
     # 类使用方法举例
-    img = cv2.imread("./res/222.bmp", 0)
+    img = cv2.imread("./res/oriBad.png", 0)
     ip = ImageProcessing(img)
     # ip.doSinFit()
     # ip.doHoughTrans()
     # ip.getP2PByHough()
-    ip.directGetP2P()
+    # ip.directGetP2P()
 
 if __name__ == "__main__":
     main()

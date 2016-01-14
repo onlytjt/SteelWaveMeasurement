@@ -75,9 +75,19 @@ def main():
     ci = CameraInterface()
     ci.initCamera()
     ci.initAttribute()
-    ci.getOneFrame()
-    ci.setROI(roiRange=ROIRANGE, offset=360-ROIRANGE/2)
-    ci.getOneFrame()
+    testImg = ci.getOneFrame()
+    ip = ImageProcessing(testImg)
+    ip.doHoughTrans()
+    ci.setROI(roiRange=ROIRANGE, offset=ip.C-ROIRANGE/2)
+    while True:
+        img = ci.getOneFrame()
+        ip1 = ImageProcessing(img)
+        cv2.imshow("ori", img)
+        cv2.imshow("canny", ip1.cannyImg)
+        cv2.imshow("binary", ip1.binaryBlurImg)
+        if cv2.waitKey(1) == 27:
+            break;
+    cv2.destroyAllWindows()
 
 if __name__ == '__main__':
     main()
