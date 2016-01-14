@@ -24,6 +24,7 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.btn_auto_test.clicked.connect(lambda: self.onClickedBtnAutoTest())
         self.btn_start_system.clicked.connect(lambda: self.onClickedBtnStartSystem())
         self.btn_close_system.clicked.connect(lambda: self.onClickedBtnCloseSystem())
+        self.btn_savefile.clicked.connect(lambda :self.onClickedBtnSaveFile())
 
 
     def adjustUI(self):
@@ -69,18 +70,26 @@ class MainUI(QMainWindow, Ui_MainWindow):
             img = q2n.gray2qimage(img)  # 此方法显示会将边缘放大，但实际处理的数据不会改变
             self.label_canny.setPixmap(QPixmap.fromImage(img))
 
-        (top, bottom) = ip.getP2PByHough()  # 获取波峰波谷像素值
+        top, bottom = ip.getP2PByHough()  # 获取波峰波谷像素值
         # 进行精度控制，格式转换
         top = float("%0.1f" % top)
         bottom = float("%0.1f" % bottom)
         pp = 8000.0/2056.0 * (top - bottom)
         pp = float("%0.2f" % pp)
-        strDis = "top:" + str(top) + ". bottom:" + str(bottom) + ". And P-P:" + str(top-bottom)
-        strDis = strDis + ". And result is:" + str(pp)
+        strDis = "top:" + str(top) + ". bottom:" + str(bottom) + ". P-P:" + str(top-bottom)
         self.edit_big_height.setText(QString(strDis))
 
+        topSin, bottomSin, width = ip.doSinFit()
+        topSin = float("%0.1f" % topSin)
+        bottomSin = float("%0.1f" % bottomSin)
+        strDisSin = "top:" + str(topSin) + ". bottom:" + str(bottomSin) + ". P-P:" + str(topSin-bottomSin)
+        self.edit_big_length.setText(QString(strDisSin))
+
+        self.edit_small_height.setText(QString(str(width)))
+
     def onClickedBtnAutoTest(self):
-        self.btn_auto_test.setText(u"正在测量中。请稍候。。")
+        # self.btn_auto_test.setText(u"正在测量中。请稍候。。")
+        self.timerShowImage.start(50)
 
 
     def onClickedBtnStartSystem(self):
@@ -93,3 +102,6 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.ci.closeCamera()
         print "Camera has been closed"
         QCoreApplication.instance().quit()
+
+    def onClickedBtnSaveFile(self):
+        self.timerShowImage.stop()

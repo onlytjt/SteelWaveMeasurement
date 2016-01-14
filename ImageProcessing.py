@@ -121,14 +121,18 @@ class ImageProcessing:
         xTrain2 = np.array(xTrain2); yTrain2 = np.array(yTrain2)
         yPred1, top1, bottom1 = self.sinFitProcess(xTrain1, yTrain1)
         yPred2, top2, bottom2 = self.sinFitProcess(xTrain2, yTrain2)
+        width = (top1+bottom1)/2 - (top2+bottom2)/2
+
+        plt.clf()
         plt.scatter(xTrain1, yTrain1, c="r", s=1)
         plt.scatter(xTrain2, yTrain2, c="r", s=1)
         plt.plot(xTrain1, yPred1, "b")
         plt.plot(xTrain2, yPred2, "r")
-        plt.show()
-
-        print "top1: ", top1
-        print "bottom2: ", bottom2
+        plt.show(block=False)
+        plt.pause(0.0001)
+        # print "top1: ", top1
+        # print "bottom2: ", bottom2
+        return top1, bottom2, width
 
     def mySin(self, x, freq, amp, phase, offset):
         return amp * np.sin(freq*x + phase) + offset
@@ -144,9 +148,9 @@ class ImageProcessing:
         fit = curve_fit(self.mySin, x, y, p0=p0)
         dataFit = self.mySin(x, *fit[0])
         # print "original guess p0 is: ", p0
-        print "predict p0 is: ", fit[0]
-        top = fit[0][1] + fit[0][3]  # 计算拟合出的sin函数的波峰和波谷的坐标
-        bottom = -fit[0][1] + fit[0][3]
+        # print "predict p0 is: ", fit[0]
+        top = np.abs(fit[0][1]) + fit[0][3]  # 计算拟合出的sin函数的波峰和波谷的坐标
+        bottom = -np.abs(fit[0][1]) + fit[0][3]
         return dataFit, top, bottom
 
 
