@@ -103,7 +103,7 @@ class ImageProcessing:
         return disTop, disBottom
 
     # 遍历已经提取完边缘的图像，提取出边缘上所有的点
-    def doSinFit(self):
+    def getWaveHeightBySin(self):
         cannyImgT = np.transpose(self.cannyImg)  # 将图像旋转90度，以沿纵向遍历
         xTrain1 = []; yTrain1 = []
         xTrain2 = []; yTrain2 = []
@@ -112,32 +112,35 @@ class ImageProcessing:
             for y, ele in enumerate(column):
                 if ele:
                     cnt = not cnt
-                    if cnt:
+                    if cnt:  # 使用-y，图像坐标系和数学坐标系不同，防止波形翻转
                         xTrain1.append(x); yTrain1.append(-y)
                     else:
                         xTrain2.append(x); yTrain2.append(-y)
 
         xTrain1 = np.array(xTrain1); yTrain1 = np.array(yTrain1)
         xTrain2 = np.array(xTrain2); yTrain2 = np.array(yTrain2)
-        yPred1, top1, bottom1 = self.sinFitProcess(xTrain1, yTrain1)
-        yPred2, top2, bottom2 = self.sinFitProcess(xTrain2, yTrain2)
-        width = (top1+bottom1)/2 - (top2+bottom2)/2
-
-        plt.clf()
-        plt.scatter(xTrain1, yTrain1, c="r", s=1)
-        plt.scatter(xTrain2, yTrain2, c="r", s=1)
-        plt.plot(xTrain1, yPred1, "b")
-        plt.plot(xTrain2, yPred2, "r")
-        plt.show(block=False)
-        plt.pause(0.0001)
+        yPred1, top1, bottom1 = self.doSinFit(xTrain1, yTrain1)
+        yPred2, top2, bottom2 = self.doSinFit(xTrain2, yTrain2)
+        wireDiameter = (top1+bottom1)/2 - (top2+bottom2)/2
+        waveHeight = top1 - bottom2
+        wireDiameter = float("%0.2f" % wireDiameter)
+        waveHeight = float("%0.2f" % waveHeight)  # 小数格式控制
+        # 通过一个独立窗口显示sin函数拟合结果，使用matplotlib
+        # plt.clf()
+        # plt.scatter(xTrain1, yTrain1, c="r", s=1)
+        # plt.scatter(xTrain2, yTrain2, c="r", s=1)
+        # plt.plot(xTrain1, yPred1, "b")
+        # plt.plot(xTrain2, yPred2, "r")
+        # plt.show(block=False)
+        # plt.pause(0.0001)
         # print "top1: ", top1
         # print "bottom2: ", bottom2
-        return top1, bottom2, width
+        return waveHeight, wireDiameter
 
     def mySin(self, x, freq, amp, phase, offset):
         return amp * np.sin(freq*x + phase) + offset
 
-    def sinFitProcess(self, x, y):
+    def doSinFit(self, x, y):
         guessOffset = np.mean(x)
         guessFreq = 2.0*np.pi / 650
         guessAmp = np.abs(np.max(x-guessOffset))
@@ -158,10 +161,7 @@ def main():
     # 类使用方法举例
     img = cv2.imread("./res/oriBad.png", 0)
     ip = ImageProcessing(img)
-    # ip.doSinFit()
-    # ip.doHoughTrans()
-    # ip.getP2PByHough()
-    # ip.directGetP2P()
+
 
 if __name__ == "__main__":
     main()
