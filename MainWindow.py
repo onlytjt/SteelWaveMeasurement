@@ -10,6 +10,7 @@ from MyUI import Ui_MainWindow # write by tjt
 import qimage2ndarray as q2n
 import ImageProcessing
 import numpy as np
+import datetime
 import matplotlib.pyplot as plt
 import threading
 
@@ -165,6 +166,6 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.edit_small_height.setText(QString(str(strEditSmallHeight)))
         self.edit_big_height.setText(QString(str(strEditBigHeight)))  # 显示大波波高像素值
         self.lineEdit_5.setText(QString(str(np.array(self.wireDiameterList).mean())))  # 显示直径平均值
-        # plt.plot(self.waveHeightList)
-        # plt.show()
+        plt.plot(self.waveHeightList)
+        plt.show()
 

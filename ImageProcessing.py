@@ -156,7 +156,6 @@ class ImageProcessing:
         bottom = -np.abs(fit[0][1]) + fit[0][3]
         return dataFit, top, bottom
 
-
 def main():
     # 类使用方法举例
     img = cv2.imread("./res/oriBad.png", 0)
