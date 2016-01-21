@@ -73,8 +73,6 @@ class MainUI(QMainWindow, Ui_MainWindow):
             self.label_canny.setPixmap(QPixmap.fromImage(img))  # 边缘显示区域也显示原始图像
             return
         else:  # 有钢丝情况，显示Canny算子计算后的边缘
-            # img = q2n.gray2qimage(ip.cannyImg)
-            # img = img.scaled(1226, self.ROIRANGE/2, Qt.KeepAspectRatio)  # 此方法显示，会造成边缘断续
             img = cv2.resize(ip.cannyImg, (1226, self.ROIRANGE), cv2.INTER_NEAREST)
             img = q2n.gray2qimage(img)  # 此方法显示会将边缘放大，但实际处理的数据不会改变
             self.label_canny.setPixmap(QPixmap.fromImage(img))
@@ -167,5 +165,6 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.edit_small_height.setText(QString(str(strEditSmallHeight)))
         self.edit_big_height.setText(QString(str(strEditBigHeight)))  # 显示大波波高像素值
         self.lineEdit_5.setText(QString(str(np.array(self.wireDiameterList).mean())))  # 显示直径平均值
-        plt.plot(self.waveHeightList)
-        plt.show()
+        # plt.plot(self.waveHeightList)
+        # plt.show()
+
