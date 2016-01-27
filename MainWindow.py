@@ -36,6 +36,7 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.ROIRANGE = 300
         self.rotatePeriod = 127
         self.waveHeightList = []
+        self.waveLengthList = []
         self.wireDiameterList = []
 
     def adjustUI(self):
@@ -78,14 +79,16 @@ class MainUI(QMainWindow, Ui_MainWindow):
             img = q2n.gray2qimage(img)  # 此方法显示会将边缘放大，但实际处理的数据不会改变
             self.label_canny.setPixmap(QPixmap.fromImage(img))
 
-        waveHeight, wireDiameter = ip.getWaveHeightBySin()
+        waveHeight, waveLength, wireDiameter = ip.getWaveHeightBySin()
         # 通过配合钢丝直径的值，得出计算结果。首先显示钢丝直径的像素值
         self.lineEdit_5.setText(QString(str(wireDiameter)))
         self.edit_big_height.setText(QString(str(waveHeight)))  # 实时显示波高像素值和直径像素值
+        self.edit_big_length.setText(QString(str(waveLength)))
 
         self.cntImgMeasuring += 1
-        self.progressBar.setValue(self.cntImgMeasuring)
+        self.progressBar.setValue(self.cntImgMeasuring)  # 更新进度条当前进度
         self.waveHeightList.append(waveHeight)
+        self.waveLengthList.append(waveLength)
         self.wireDiameterList.append(wireDiameter)  # 计数器和数据记录
 
         if self.cntImgMeasuring > self.rotatePeriod:  # 测量时间大于设定值
@@ -95,6 +98,7 @@ class MainUI(QMainWindow, Ui_MainWindow):
     def onClickedBtnAutoTest(self):
         # 为满足多次重复测量情况，在每次测量前，需要对一些record进行清零操作
         self.waveHeightList = []  # 波高record清零
+        self.waveLengthList = []  # 波长record清零
         self.wireDiameterList = []  # 钢丝直径清零
         self.edit_small_height.setText("")  # 清空显示残留值
         self.btn_auto_test.setText(u"正在测量中。请稍候。")
@@ -116,14 +120,6 @@ class MainUI(QMainWindow, Ui_MainWindow):
     def onClickedBtnSaveFile(self):
         self.timerShowImage.stop()
 
-    def tmpWriteImg(self):
-        oriImg = self.ci.getOneFrame()
-        img = q2n.gray2qimage(oriImg)
-        img = img.scaled(1226, self.ROIRANGE/2, Qt.KeepAspectRatio)
-        self.label_image.setPixmap(QPixmap.fromImage(img))
-        self.cntImgMeasuring += 1
-        cv2.imwrite("./TmpImg/test%i.png" % self.cntImgMeasuring, oriImg)
-
     def dealWaveDataFromList(self, data):
         indexOfPeakInData = []  # 用于保存数据中找到的极值的索引值
         # 首先做前后向查分，找到一些极值
@@ -137,6 +133,20 @@ class MainUI(QMainWindow, Ui_MainWindow):
             print index, ": ", data[index]
             if index-1 == indexOfPeakInData[i-1] and data[index] == data[index-1]:
                 del indexOfPeakInData[i]  # 保留较小的下标值
+
+        # 暂时测试使用两个大波之间的坐标直接得到小波波高，20160126
+        # 找寻和小波所在位置的下标，以计算波长
+        if self.waveHeightList[indexOfPeakInData[0]] < self.waveHeightList[indexOfPeakInData[1]]:
+            smallWaveLengthIndex = indexOfPeakInData[0]
+            bigWaveLengthIndex = indexOfPeakInData[1]
+            print "中点小波测量法：", self.waveHeightList[(indexOfPeakInData[1]+indexOfPeakInData[3])/2], ", ", \
+                self.waveHeightList[(indexOfPeakInData[1]+indexOfPeakInData[3])/2]*110.0/np.array(self.wireDiameterList).mean()
+        else:
+            smallWaveLengthIndex = indexOfPeakInData[1]
+            bigWaveLengthIndex = indexOfPeakInData[0]
+            print "中点小波测量法：", self.waveHeightList[(indexOfPeakInData[0]+indexOfPeakInData[2])/2], ", ", \
+                self.waveHeightList[(indexOfPeakInData[0]+indexOfPeakInData[2])/2]*110.0/np.array(self.wireDiameterList).mean()
+
         peak1 = []; peak2 = []  # 将大波和小波的波高区分开
         for i, index in enumerate(indexOfPeakInData):
             if not i%2:  # 从第0个开始
@@ -147,7 +157,7 @@ class MainUI(QMainWindow, Ui_MainWindow):
         print "peak2: ", peak2
         smallWaveHeight = min(np.array(peak1).mean(), np.array(peak2).mean())
         bigWaveHeight = max(np.array(peak1).mean(), np.array(peak2).mean())
-        return smallWaveHeight, bigWaveHeight
+        return smallWaveHeight, bigWaveHeight, smallWaveLengthIndex, bigWaveLengthIndex
 
     def completeMeasure(self):
         self.btn_auto_test.setText(u"自动测量")
@@ -155,16 +165,23 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.cntImgMeasuring = 0  # 清零测量计时计数
         self.isMeasuring = False  # 设置状态标志位，不在测量中，不进行图像和数据处理
 
-        smallWaveHeightPixel, bigWaveHeightPixel = self.dealWaveDataFromList(self.waveHeightList)
-        aveWireDiameterPixel = float("%0.2f" % np.array(self.wireDiameterList).mean())
+        self.waveHeightList = ImageProcessing.ImageProcessing.smoothFilter(self.waveHeightList)  # 三点平滑滤波
+        smallWaveHeightPixel, bigWaveHeightPixel, \
+        smallWaveLengthIndex, bigWaveLengthIndex = self.dealWaveDataFromList(self.waveHeightList)
 
-        smallWaveHeight = 112.0/aveWireDiameterPixel * smallWaveHeightPixel
-        bigWaveHeight = 112.0/aveWireDiameterPixel * bigWaveHeightPixel
-        strEditBigHeight = str(bigWaveHeightPixel) + ",  " + str(bigWaveHeight)
-        strEditSmallHeight = str(smallWaveHeightPixel) + ",  " + str(smallWaveHeight)
+        aveWireDiameterPixel = float("%0.2f" % np.array(self.wireDiameterList).mean())
+        smallWaveHeight = 110.0/aveWireDiameterPixel * smallWaveHeightPixel
+        bigWaveHeight = 110.0/aveWireDiameterPixel * bigWaveHeightPixel
+        smallWaveLength = 110.0/aveWireDiameterPixel * self.waveLengthList[smallWaveLengthIndex]
+        bigWaveLength = 110.0/aveWireDiameterPixel * self.waveLengthList[bigWaveLengthIndex]
+
+        strEditBigHeight = str(bigWaveHeightPixel) + ",  " + str(float("%0.1f" % bigWaveHeight))
+        strEditSmallHeight = str(smallWaveHeightPixel) + ",  " + str(float("%0.1f" % smallWaveHeight))
 
         self.edit_small_height.setText(QString(str(strEditSmallHeight)))
-        self.edit_big_height.setText(QString(str(strEditBigHeight)))  # 显示大波波高像素值
+        self.edit_big_height.setText(QString(str(strEditBigHeight)))
+        self.edit_small_length.setText(QString(str(float("%0.1f" % smallWaveLength))))
+        self.edit_big_length.setText(QString(str(float("%0.1f" % bigWaveLength))))
         self.lineEdit_5.setText(QString(str(np.array(self.wireDiameterList).mean())))  # 显示直径平均值
         plt.plot(self.waveHeightList)
         plt.show()

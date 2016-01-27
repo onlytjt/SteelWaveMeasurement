@@ -119,8 +119,8 @@ class ImageProcessing:
 
         xTrain1 = np.array(xTrain1); yTrain1 = np.array(yTrain1)
         xTrain2 = np.array(xTrain2); yTrain2 = np.array(yTrain2)
-        yPred1, top1, bottom1 = self.doSinFit(xTrain1, yTrain1)
-        yPred2, top2, bottom2 = self.doSinFit(xTrain2, yTrain2)
+        yPred1, top1, bottom1, waveLength1 = self.doSinFit(xTrain1, yTrain1)
+        yPred2, top2, bottom2, waveLength2 = self.doSinFit(xTrain2, yTrain2)
         wireDiameter = (top1+bottom1)/2 - (top2+bottom2)/2
         waveHeight = top1 - bottom2
         wireDiameter = float("%0.2f" % wireDiameter)
@@ -135,7 +135,8 @@ class ImageProcessing:
         # plt.pause(0.0001)
         # print "top1: ", top1
         # print "bottom2: ", bottom2
-        return waveHeight, wireDiameter
+        waveLengthAve = (waveLength1 + waveLength2) / 2
+        return waveHeight, waveLengthAve, wireDiameter
 
     def mySin(self, x, freq, amp, phase, offset):
         return amp * np.sin(freq*x + phase) + offset
@@ -154,7 +155,15 @@ class ImageProcessing:
         # print "predict p0 is: ", fit[0]
         top = np.abs(fit[0][1]) + fit[0][3]  # 计算拟合出的sin函数的波峰和波谷的坐标
         bottom = -np.abs(fit[0][1]) + fit[0][3]
-        return dataFit, top, bottom
+        waveLength = 2*np.pi / fit[0][0]
+        return dataFit, top, bottom, waveLength
+
+    @staticmethod
+    def smoothFilter(inputList):  # 3点平滑滤波
+        for i in (1, len(inputList)-2):
+            inputList[i] = (inputList[i-1]+inputList[i]+inputList[i+1]) / 3
+        return inputList
+
 
 def main():
     # 类使用方法举例
