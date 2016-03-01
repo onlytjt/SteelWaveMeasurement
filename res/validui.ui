@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1305</width>
-    <height>765</height>
+    <width>1307</width>
+    <height>942</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,6 +23,12 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="text">
      <string>宝钢自动钢丝测量仪</string>
     </property>
@@ -36,6 +42,12 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="text">
      <string>开发单位：上海交通大学</string>
     </property>
@@ -43,24 +55,36 @@
    <widget class="QLabel" name="label_image">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>160</y>
-      <width>1226</width>
-      <height>150</height>
+      <x>160</x>
+      <y>120</y>
+      <width>981</width>
+      <height>120</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="text">
-     <string>图像显示区域1226*100</string>
+     <string>图像981*80,从2452*200变换得来。显示区域稍微大一些</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_auto_test">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>600</y>
+      <x>740</x>
+      <y>740</y>
       <width>301</width>
       <height>71</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>自动测量</string>
@@ -70,10 +94,16 @@
     <property name="geometry">
      <rect>
       <x>166</x>
-      <y>536</y>
+      <y>666</y>
       <width>48</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>大波波高</string>
@@ -86,20 +116,32 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>536</y>
+      <y>666</y>
       <width>341</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
       <x>166</x>
-      <y>574</y>
+      <y>704</y>
       <width>48</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>大波波长</string>
@@ -112,20 +154,32 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>574</y>
+      <y>704</y>
       <width>341</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
       <x>166</x>
-      <y>612</y>
+      <y>742</y>
       <width>48</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>小波波高</string>
@@ -138,20 +192,32 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>612</y>
+      <y>742</y>
       <width>341</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
       <x>166</x>
-      <y>650</y>
+      <y>780</y>
       <width>48</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>小波波长</string>
@@ -164,30 +230,48 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>650</y>
+      <y>780</y>
       <width>341</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_5">
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>690</y>
+      <y>820</y>
       <width>241</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_start_system">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>520</y>
+      <x>740</x>
+      <y>660</y>
       <width>151</width>
       <height>61</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>打开系统</string>
@@ -196,11 +280,17 @@
    <widget class="QPushButton" name="btn_close_system">
     <property name="geometry">
      <rect>
-      <x>890</x>
-      <y>520</y>
+      <x>900</x>
+      <y>660</y>
       <width>141</width>
       <height>61</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>关闭系统</string>
@@ -209,24 +299,30 @@
    <widget class="QLabel" name="label_canny">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>350</y>
-      <width>1226</width>
+      <x>160</x>
+      <y>250</y>
+      <width>981</width>
       <height>150</height>
      </rect>
     </property>
     <property name="text">
-     <string>边缘显示区域1226*100</string>
+     <string>图像981*80,从2452*200变换得来。显示提取后的边缘，要更大的显示区域</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_savefile">
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>690</y>
+      <y>820</y>
       <width>75</width>
       <height>23</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>保存</string>
@@ -235,14 +331,30 @@
    <widget class="QProgressBar" name="progressBar">
     <property name="geometry">
      <rect>
-      <x>740</x>
-      <y>690</y>
+      <x>750</x>
+      <y>830</y>
       <width>301</width>
       <height>23</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="value">
      <number>24</number>
+    </property>
+   </widget>
+   <widget class="QTableView" name="table">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>420</y>
+      <width>1081</width>
+      <height>192</height>
+     </rect>
     </property>
    </widget>
   </widget>

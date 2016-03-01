@@ -35,6 +35,7 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.cntImgMeasuring = 0
         self.ROIRANGE = 300
         self.rotatePeriod = 127
+        self.realWireDiameter = 110.0
         self.waveHeightList = []
         self.waveLengthList = []
         self.wireDiameterList = []
@@ -47,6 +48,24 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.label_title.setAlignment(Qt.AlignCenter)
         self.label_title.setPalette(pe)
         self.label_title.setFont(QFont("Roman times", 20, QFont.Bold))
+
+        self.initTable()
+        self.initProcessBar()
+
+    def initTable(self):
+        self.tableModel = QStandardItemModel()
+        self.tableModel.setColumnCount(10)
+        listTableHeader = [u"日期", u"盘号", u"车台号", u"类型",
+                           u"大波波高", u"小波波高", u"大波波长", u"小波波长",
+                           u"行动", u"备注"]
+        for i in range(10):
+            self.tableModel.setHeaderData(i, Qt.Horizontal, QString(listTableHeader[i]))
+        self.table.setModel(self.tableModel)
+        for i in range(5):
+            for j in range(10):
+                self.tableModel.setItem(i, j, QStandardItem(""))
+
+    def initProcessBar(self):
         self.progressBar.setMinimum(0)  # 初始化进度条相关设置，最大最小值，初始值为0
         self.progressBar.setMaximum(self.rotatePeriod)
         self.progressBar.setValue(0)
@@ -63,21 +82,25 @@ class MainUI(QMainWindow, Ui_MainWindow):
             self.ci.setROI(roiRange=self.ROIRANGE)
 
     def onTimerShowImage(self):
-        # 采集图像
-        oriImg = self.ci.getOneFrame()
-        # 显示原始图像
+        oriImg = self.ci.getOneFrame()  # 采集图像
+        self.displayOriImg(oriImg)  # 显示原始图像
+        self.displayEdgeImg(oriImg)  # 显示边缘图像
+
+    def displayOriImg(self, oriImg):  # 原始图像区域的处理
         img = q2n.gray2qimage(oriImg)
-        img = img.scaled(1226, self.ROIRANGE/2, Qt.KeepAspectRatio)
+        img = img.scaled(981, 120, Qt.KeepAspectRatio)  # 从1226*150以0.8倍变换得来
         self.label_image.setPixmap(QPixmap.fromImage(img))
-        # 图像处理初始化
+
+    def displayEdgeImg(self, oriImg):  # 边缘显示区域的处理
         ip = ImageProcessing.ImageProcessing(oriImg)
         if (not self.isMeasuring) or (not ip.doHoughTrans()):  # 检测图像没有钢丝。或系统刚启动，没在测量时
-            self.label_canny.setPixmap(QPixmap.fromImage(img))  # 边缘显示区域也显示原始图像
-            return
+            # 边缘显示区域也显示原始图像
+            img = q2n.gray2qimage(oriImg)
+            img = img.scaled(981, 120, Qt.KeepAspectRatio)
         else:  # 有钢丝情况，显示Canny算子计算后的边缘
-            img = cv2.resize(ip.cannyImg, (1226, self.ROIRANGE), cv2.INTER_NEAREST)
+            img = cv2.resize(ip.cannyImg, (981, 120), cv2.INTER_NEAREST)
             img = q2n.gray2qimage(img)  # 此方法显示会将边缘放大，但实际处理的数据不会改变
-            self.label_canny.setPixmap(QPixmap.fromImage(img))
+        self.label_canny.setPixmap(QPixmap.fromImage(img))  # 在边缘显示区域写入图像
 
         waveHeight, waveLength, wireDiameter = ip.getWaveHeightBySin()
         # 通过配合钢丝直径的值，得出计算结果。首先显示钢丝直径的像素值
@@ -93,7 +116,6 @@ class MainUI(QMainWindow, Ui_MainWindow):
 
         if self.cntImgMeasuring > self.rotatePeriod:  # 测量时间大于设定值
             self.completeMeasure()  # 测量完成进行相应得清零和整理工作
-
 
     def onClickedBtnAutoTest(self):
         # 为满足多次重复测量情况，在每次测量前，需要对一些record进行清零操作
@@ -127,7 +149,8 @@ class MainUI(QMainWindow, Ui_MainWindow):
             right1 = 0 if (index+1)>self.rotatePeriod else index+1  # 保证下标的循环
             right2 = 1 if (index+2)>self.rotatePeriod else index+2
             if value>=data[index-1] and value>=data[index-2] and value>=data[right1] and value>=data[right2]:
-                indexOfPeakInData.append(index)
+                if index != 0 and index != self.rotatePeriod:
+                    indexOfPeakInData.append(index)
         # 去除极值中索引相邻，值重复的项
         for i, index in enumerate(indexOfPeakInData):
             print index, ": ", data[index]
@@ -170,10 +193,10 @@ class MainUI(QMainWindow, Ui_MainWindow):
         smallWaveLengthIndex, bigWaveLengthIndex = self.dealWaveDataFromList(self.waveHeightList)
 
         aveWireDiameterPixel = float("%0.2f" % np.array(self.wireDiameterList).mean())
-        smallWaveHeight = 110.0/aveWireDiameterPixel * smallWaveHeightPixel
-        bigWaveHeight = 110.0/aveWireDiameterPixel * bigWaveHeightPixel
-        smallWaveLength = 110.0/aveWireDiameterPixel * self.waveLengthList[smallWaveLengthIndex]
-        bigWaveLength = 110.0/aveWireDiameterPixel * self.waveLengthList[bigWaveLengthIndex]
+        smallWaveHeight = self.realWireDiameter/aveWireDiameterPixel * smallWaveHeightPixel
+        bigWaveHeight = self.realWireDiameter/aveWireDiameterPixel * bigWaveHeightPixel
+        smallWaveLength = self.realWireDiameter/aveWireDiameterPixel * self.waveLengthList[smallWaveLengthIndex]
+        bigWaveLength = self.realWireDiameter/aveWireDiameterPixel * self.waveLengthList[bigWaveLengthIndex]
 
         strEditBigHeight = str(bigWaveHeightPixel) + ",  " + str(float("%0.1f" % bigWaveHeight))
         strEditSmallHeight = str(smallWaveHeightPixel) + ",  " + str(float("%0.1f" % smallWaveHeight))
