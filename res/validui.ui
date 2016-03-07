@@ -55,27 +55,27 @@
    <widget class="QLabel" name="label_image">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>40</x>
       <y>120</y>
-      <width>981</width>
-      <height>120</height>
+      <width>1226</width>
+      <height>150</height>
      </rect>
     </property>
     <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
       <horstretch>0</horstretch>
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
     <property name="text">
-     <string>图像981*80,从2452*200变换得来。显示区域稍微大一些</string>
+     <string>图像1226*100,从2452*200变换得来。显示区域稍微大一些</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_auto_test">
     <property name="geometry">
      <rect>
       <x>740</x>
-      <y>740</y>
+      <y>810</y>
       <width>301</width>
       <height>71</height>
      </rect>
@@ -94,7 +94,7 @@
     <property name="geometry">
      <rect>
       <x>166</x>
-      <y>666</y>
+      <y>736</y>
       <width>48</width>
       <height>16</height>
      </rect>
@@ -116,7 +116,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>666</y>
+      <y>736</y>
       <width>341</width>
       <height>20</height>
      </rect>
@@ -132,7 +132,7 @@
     <property name="geometry">
      <rect>
       <x>166</x>
-      <y>704</y>
+      <y>774</y>
       <width>48</width>
       <height>16</height>
      </rect>
@@ -154,7 +154,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>704</y>
+      <y>774</y>
       <width>341</width>
       <height>20</height>
      </rect>
@@ -170,7 +170,7 @@
     <property name="geometry">
      <rect>
       <x>166</x>
-      <y>742</y>
+      <y>812</y>
       <width>48</width>
       <height>16</height>
      </rect>
@@ -192,7 +192,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>742</y>
+      <y>812</y>
       <width>341</width>
       <height>20</height>
      </rect>
@@ -208,7 +208,7 @@
     <property name="geometry">
      <rect>
       <x>166</x>
-      <y>780</y>
+      <y>850</y>
       <width>48</width>
       <height>16</height>
      </rect>
@@ -230,7 +230,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>780</y>
+      <y>850</y>
       <width>341</width>
       <height>20</height>
      </rect>
@@ -246,7 +246,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>820</y>
+      <y>890</y>
       <width>241</width>
       <height>20</height>
      </rect>
@@ -262,7 +262,7 @@
     <property name="geometry">
      <rect>
       <x>740</x>
-      <y>660</y>
+      <y>730</y>
       <width>151</width>
       <height>61</height>
      </rect>
@@ -281,7 +281,7 @@
     <property name="geometry">
      <rect>
       <x>900</x>
-      <y>660</y>
+      <y>730</y>
       <width>141</width>
       <height>61</height>
      </rect>
@@ -299,21 +299,21 @@
    <widget class="QLabel" name="label_canny">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>250</y>
-      <width>981</width>
-      <height>150</height>
+      <x>40</x>
+      <y>280</y>
+      <width>1226</width>
+      <height>200</height>
      </rect>
     </property>
     <property name="text">
-     <string>图像981*80,从2452*200变换得来。显示提取后的边缘，要更大的显示区域</string>
+     <string>图像1226*100,从2452*200变换得来。显示提取后的边缘，要更大的显示区域</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_savefile">
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>820</y>
+      <y>890</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -332,7 +332,7 @@
     <property name="geometry">
      <rect>
       <x>750</x>
-      <y>830</y>
+      <y>900</y>
       <width>301</width>
       <height>23</height>
      </rect>
@@ -350,8 +350,8 @@
    <widget class="QTableView" name="table">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>420</y>
+      <x>110</x>
+      <y>500</y>
       <width>1081</width>
       <height>192</height>
      </rect>
