@@ -34,16 +34,18 @@ class CameraInterface:
         print "CameraFeature: ", self.camera.AcquisitionMode  # 列出相机当前设置
         # print self.camera._handle._dist_
         self.camera.AcquisitionMode = 'SingleFrame'  # 设置相机的帧采集模式
+        # self.camera.AcquisitionMode = 'Continuous'  # 设置相机的帧采集模式
 
+        # 使用G223时，由于帧率足够，不对相机设置ROI，获取整幅图像后剪裁
         offsetY = VimbaFeature("OffsetY", self.camera._handle)
         offsetY._setIntFeature(0)
         height = VimbaFeature("Height", self.camera._handle)
-        height._setIntFeature(2056)  # 每次重启相机都将设置回复为默认值
+        height._setIntFeature(1088)  # 每次重启相机都将设置回复为默认值
 
         self.frame0 = self.camera.getFrame()
         self.frame0.announceFrame()  # 为frame声明内存
 
-    def setROI(self, roiRange=2056, offset=0):
+    def setROI(self, roiRange=1088, offset=0):
         offsetY = VimbaFeature("OffsetY", self.camera._handle)
         offsetY._setIntFeature(offset)
         height = VimbaFeature("Height", self.camera._handle)
@@ -57,7 +59,7 @@ class CameraInterface:
         self.camera.runFeatureCommand('AcquisitionStart')
         self.camera.runFeatureCommand('AcquisitionStop')
         self.frame0.waitFrameCapture()
-        imgData = self.frame0.getBufferByteData()
+        # imgData = self.frame0.getBufferByteData()
         moreUsefulImgData = np.ndarray(buffer=self.frame0.getBufferByteData(),
                                    dtype=np.uint8,
                                    shape=(self.frame0.height, self.frame0.width))  # numpy的ndarray进行方便进行处理
@@ -86,7 +88,7 @@ def main():
         cv2.imshow("canny", ip1.cannyImg)
         cv2.imshow("binary", ip1.binaryBlurImg)
         if cv2.waitKey(1) == 27:
-            break;
+            break
     cv2.destroyAllWindows()
 
 if __name__ == '__main__':

@@ -7,18 +7,18 @@
 import cv2
 import numpy as np
 import datetime
-import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
-from scipy.optimize import leastsq
+import matplotlib.pyplot as plt
+import DataProcessing as dp
 
 class ImageProcessing:
     # 构造函数，读入图像
     # 私有变量存储：高斯模糊，模糊后二值图(反转颜色)，canny算子边缘图
     def __init__(self, image):
         self.originImg = image
-        self.blurImg = cv2.GaussianBlur(self.originImg, (3, 3), 0)
+        self.blurImg = cv2.GaussianBlur(self.originImg, (3, 3), 0)  # 高斯模糊
         ret, self.binaryBlurImg = cv2.threshold(self.blurImg, 125, 255, cv2.THRESH_BINARY_INV)
-        self.cannyImg = cv2.Canny(self.binaryBlurImg, 50, 150) # 图像正放
+        self.cannyImg = cv2.Canny(self.binaryBlurImg, 75, 150)  # 图像正放
 
     # 直接遍历canny边缘图，计算整幅图像的最高和最低
     def directGetP2P(self):
@@ -45,8 +45,8 @@ class ImageProcessing:
     # 提取图像中的直线，并保存直线A, B, C参数
     def doHoughTrans(self):
         img = self.binaryBlurImg
-        lines = cv2.HoughLines(img, 1, np.pi/180, 300)
-        if lines == None:  # 如果经过霍夫变换，发现图像中没有钢丝，直接返回False
+        lines = cv2.HoughLines(img, 1, np.pi/180, 100)
+        if lines is None:  # 如果经过霍夫变换，发现图像中没有钢丝，直接返回False
             return False
         result = self.cannyImg.copy()
         for line in lines[0]:
@@ -119,8 +119,8 @@ class ImageProcessing:
 
         xTrain1 = np.array(xTrain1); yTrain1 = np.array(yTrain1)
         xTrain2 = np.array(xTrain2); yTrain2 = np.array(yTrain2)
-        yPred1, top1, bottom1, waveLength1 = self.doSinFit(xTrain1, yTrain1)
-        yPred2, top2, bottom2, waveLength2 = self.doSinFit(xTrain2, yTrain2)
+        yPred1, top1, bottom1 = self.doSinFit(xTrain1, yTrain1)
+        yPred2, top2, bottom2 = self.doSinFit(xTrain2, yTrain2)
         wireDiameter = (top1+bottom1)/2 - (top2+bottom2)/2
         waveHeight = top1 - bottom2
         wireDiameter = float("%0.2f" % wireDiameter)
@@ -135,8 +135,12 @@ class ImageProcessing:
         # plt.pause(0.0001)
         # print "top1: ", top1
         # print "bottom2: ", bottom2
-        waveLengthAve = (waveLength1 + waveLength2) / 2
-        return waveHeight, waveLengthAve, wireDiameter
+        # 通过分析图像寻找极值的方法得出波长值
+        maxTab, minTab = dp.peakdet(yTrain1, 1)
+        maxLength = dp.getAveWaveLength(maxTab)
+        minLength = dp.getAveWaveLength(minTab)
+        waveLength = (maxLength+minLength) / 2
+        return waveHeight, waveLength, wireDiameter
 
     def mySin(self, x, freq, amp, phase, offset):
         return amp * np.sin(freq*x + phase) + offset
@@ -155,14 +159,8 @@ class ImageProcessing:
         # print "predict p0 is: ", fit[0]
         top = np.abs(fit[0][1]) + fit[0][3]  # 计算拟合出的sin函数的波峰和波谷的坐标
         bottom = -np.abs(fit[0][1]) + fit[0][3]
-        waveLength = 2*np.pi / fit[0][0]
-        return dataFit, top, bottom, waveLength
+        return dataFit, top, bottom
 
-    @staticmethod
-    def smoothFilter(inputList):  # 3点平滑滤波
-        for i in (1, len(inputList)-2):
-            inputList[i] = (inputList[i-1]+inputList[i]+inputList[i+1]) / 3
-        return inputList
 
 
 def main():
