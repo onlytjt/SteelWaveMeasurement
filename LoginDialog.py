@@ -15,6 +15,7 @@ class LoginDialog(QDialog, Ui_Dialog):
         self.btn_exit.clicked.connect(lambda: self.onClickedBtnExit())
 
     def adjustUI(self):
+        self.setWindowIcon(QIcon("./res/sjtu.jpg"))  # 设置图标
         pe = QPalette()  # 设置标题的字体，字号，颜色
         pe.setColor(QPalette.WindowText, Qt.red)
         self.label_title.setAlignment(Qt.AlignCenter)

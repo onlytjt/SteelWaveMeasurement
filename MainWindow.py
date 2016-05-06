@@ -2,7 +2,8 @@
 # -*- coding:utf-8 -*-
 import sys
 import cv2
-import Camera # write by tjt
+import Camera  # write by tjt
+import time
 
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
@@ -24,7 +25,6 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.initVariable()
         self.adjustUI()
 
-        # QObject.connect(self.timerShowImage, SIGNAL("timeout()"), self.onTimerShowImage())
         self.timerShowImage = QTimer()
         self.timerShowImage.timeout.connect(lambda: self.onTimerShowImage())
         self.btn_auto_test.clicked.connect(lambda: self.onClickedBtnAutoTest())
@@ -57,7 +57,7 @@ class MainUI(QMainWindow, Ui_MainWindow):
 
     def adjustUI(self):
         self.setWindowTitle("Shanghai Jiao Tong University")
-        self.setWindowIcon(QIcon("./res/bilibili.jpg"))  # 设置图标
+        self.setWindowIcon(QIcon("./res/sjtu.jpg"))  # 设置图标
         pe = QPalette()  # 设置标题的字体，字号，颜色
         pe.setColor(QPalette.WindowText, Qt.red)
         self.label_title.setAlignment(Qt.AlignCenter)
@@ -197,7 +197,8 @@ class MainUI(QMainWindow, Ui_MainWindow):
     def onClickedBtnStartSystem(self):
         self.btn_start_system.setDisabled(True)
         self.initCamera()
-        self.timerShowImage.start(50)
+        # time.sleep(5)
+        self.timerShowImage.start(100)
         self.isMeasuring = 0  # 0-未测量，待机状态。1-自动测量中。2-演示模式。
 
     def onClickedBtnCloseSystem(self):
@@ -234,7 +235,7 @@ class MainUI(QMainWindow, Ui_MainWindow):
         f.close()
         saved = QMessageBox.information(None, "Saved", u"数据已保存完毕")
         if saved == QMessageBox.Ok:
-            self.timerShowImage.start(50)
+            self.timerShowImage.start(100)
 
 
     def onClickedBtnShowMode(self):
@@ -256,6 +257,7 @@ class MainUI(QMainWindow, Ui_MainWindow):
     def onClickedBtnCancel(self):
         self.btn_auto_test.setText(u"自动测量")
         self.btn_auto_test.setDisabled(False)  # 恢复测量Btn状态
+        self.progressBar.setValue(0)  # 清零进度条
         self.cntImgMeasuring = 0  # 清零测量计时计数
         self.isMeasuring = 0  # 设置状态标志位，不在测量中，不进行图像和数据处理
 

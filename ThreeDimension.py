@@ -39,25 +39,24 @@ def buildWaveModel(height, length):
     bigWaveLength = max(bigWaveLengthList)
     smallWaveLength = min(smallWaveLengthList)
 
-    '''
     # 波高曲线图
     p1 = plt.subplot(211)
     p1.scatter(range(len(height)), height, s=10)
     p1.plot(height, "r")
-    # for i in range(peakBigWave.shape[0]):
-    #     p1.plot([peakBigWave[i, 0]]*2, [15, 30], "b")
-    for i in range(peakSmallWave.shape[0]):
+    for i in range(peakBigWave.shape[0]):  # 大波蓝色标注
+        p1.plot([peakBigWave[i, 0]]*2, [15, 30], "b")
+    for i in range(peakSmallWave.shape[0]):  # 小波红色标注
         p1.plot([peakSmallWave[i, 0]] * 2, [15, 30], "r")
      # 波长曲线图
     p2 = plt.subplot(212)
     p2.scatter(range(len(length)), length, s=10)
     p2.plot(length, "r")
-    # for i in range(peakBigWave.shape[0]):
-    #     p2.plot([peakBigWave[i, 0]]*2, [500, 600], "b")
+    for i in range(peakBigWave.shape[0]):
+        p2.plot([peakBigWave[i, 0]]*2, [500, 600], "b")
     for i in range(peakSmallWave.shape[0]):
         p2.plot([peakSmallWave[i, 0]] * 2, [500, 600], "r")
     plt.show()
-    '''
+
     return bigWaveHeight, smallWaveHeight, bigWaveLength, smallWaveLength
 
 

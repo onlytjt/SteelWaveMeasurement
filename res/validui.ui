@@ -30,7 +30,7 @@
      </sizepolicy>
     </property>
     <property name="text">
-     <string>高晟变形钢丝自动测量仪</string>
+     <string>变形钢丝自动测量系统</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_image">

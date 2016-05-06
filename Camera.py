@@ -37,12 +37,13 @@ class CameraInterface:
         # self.camera.AcquisitionMode = 'Continuous'  # 设置相机的帧采集模式
 
         # 使用G223时，由于帧率足够，不对相机设置ROI，获取整幅图像后剪裁
-        offsetY = VimbaFeature("OffsetY", self.camera._handle)
-        offsetY._setIntFeature(0)
-        height = VimbaFeature("Height", self.camera._handle)
-        height._setIntFeature(1088)  # 每次重启相机都将设置回复为默认值
+        # offsetY = VimbaFeature("OffsetY", self.camera._handle)
+        # offsetY._setIntFeature(0)
+        # height = VimbaFeature("Height", self.camera._handle)
+        # height._setIntFeature(1088)  # 每次重启相机都将设置回复为默认值
 
         self.frame0 = self.camera.getFrame()
+        self.frame1 = self.camera.getFrame()
         self.frame0.announceFrame()  # 为frame声明内存
 
     def setROI(self, roiRange=1088, offset=0):

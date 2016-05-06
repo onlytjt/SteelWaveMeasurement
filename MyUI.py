@@ -125,7 +125,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
-        self.label_title.setText(_translate("MainWindow", "高晟变形钢丝自动测量仪", None))
+        self.label_title.setText(_translate("MainWindow", "变形钢丝自动测量系统", None))
         self.label_image.setText(_translate("MainWindow", "图像1024*125,从2048*250变换得来", None))
         self.btn_auto_test.setText(_translate("MainWindow", "自动测量", None))
         self.btn_start_system.setText(_translate("MainWindow", "打开系统", None))
