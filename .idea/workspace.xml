@@ -2,13 +2,102 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e9cf9d7-a3d2-4b35-9f47-d5b32419916b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/bilibili.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/validui.ui" afterPath="$PROJECT_DIR$/res/validui.ui" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/0.png" afterPath="$PROJECT_DIR$/img_tmp/0.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/1.png" afterPath="$PROJECT_DIR$/img_tmp/1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/10.png" afterPath="$PROJECT_DIR$/img_tmp/10.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/11.png" afterPath="$PROJECT_DIR$/img_tmp/11.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/12.png" afterPath="$PROJECT_DIR$/img_tmp/12.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/13.png" afterPath="$PROJECT_DIR$/img_tmp/13.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/14.png" afterPath="$PROJECT_DIR$/img_tmp/14.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/15.png" afterPath="$PROJECT_DIR$/img_tmp/15.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/16.png" afterPath="$PROJECT_DIR$/img_tmp/16.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/17.png" afterPath="$PROJECT_DIR$/img_tmp/17.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/18.png" afterPath="$PROJECT_DIR$/img_tmp/18.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/19.png" afterPath="$PROJECT_DIR$/img_tmp/19.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/2.png" afterPath="$PROJECT_DIR$/img_tmp/2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/20.png" afterPath="$PROJECT_DIR$/img_tmp/20.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/21.png" afterPath="$PROJECT_DIR$/img_tmp/21.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/22.png" afterPath="$PROJECT_DIR$/img_tmp/22.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/23.png" afterPath="$PROJECT_DIR$/img_tmp/23.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/24.png" afterPath="$PROJECT_DIR$/img_tmp/24.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/25.png" afterPath="$PROJECT_DIR$/img_tmp/25.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/26.png" afterPath="$PROJECT_DIR$/img_tmp/26.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/27.png" afterPath="$PROJECT_DIR$/img_tmp/27.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/28.png" afterPath="$PROJECT_DIR$/img_tmp/28.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/29.png" afterPath="$PROJECT_DIR$/img_tmp/29.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/3.png" afterPath="$PROJECT_DIR$/img_tmp/3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/30.png" afterPath="$PROJECT_DIR$/img_tmp/30.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/31.png" afterPath="$PROJECT_DIR$/img_tmp/31.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/32.png" afterPath="$PROJECT_DIR$/img_tmp/32.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/33.png" afterPath="$PROJECT_DIR$/img_tmp/33.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/34.png" afterPath="$PROJECT_DIR$/img_tmp/34.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/35.png" afterPath="$PROJECT_DIR$/img_tmp/35.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/36.png" afterPath="$PROJECT_DIR$/img_tmp/36.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/37.png" afterPath="$PROJECT_DIR$/img_tmp/37.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/38.png" afterPath="$PROJECT_DIR$/img_tmp/38.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/39.png" afterPath="$PROJECT_DIR$/img_tmp/39.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/4.png" afterPath="$PROJECT_DIR$/img_tmp/4.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/40.png" afterPath="$PROJECT_DIR$/img_tmp/40.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/41.png" afterPath="$PROJECT_DIR$/img_tmp/41.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/42.png" afterPath="$PROJECT_DIR$/img_tmp/42.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/43.png" afterPath="$PROJECT_DIR$/img_tmp/43.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/44.png" afterPath="$PROJECT_DIR$/img_tmp/44.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/45.png" afterPath="$PROJECT_DIR$/img_tmp/45.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/46.png" afterPath="$PROJECT_DIR$/img_tmp/46.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/47.png" afterPath="$PROJECT_DIR$/img_tmp/47.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/48.png" afterPath="$PROJECT_DIR$/img_tmp/48.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/49.png" afterPath="$PROJECT_DIR$/img_tmp/49.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/5.png" afterPath="$PROJECT_DIR$/img_tmp/5.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/50.png" afterPath="$PROJECT_DIR$/img_tmp/50.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/51.png" afterPath="$PROJECT_DIR$/img_tmp/51.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/52.png" afterPath="$PROJECT_DIR$/img_tmp/52.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/53.png" afterPath="$PROJECT_DIR$/img_tmp/53.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/54.png" afterPath="$PROJECT_DIR$/img_tmp/54.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/55.png" afterPath="$PROJECT_DIR$/img_tmp/55.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/56.png" afterPath="$PROJECT_DIR$/img_tmp/56.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/57.png" afterPath="$PROJECT_DIR$/img_tmp/57.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/58.png" afterPath="$PROJECT_DIR$/img_tmp/58.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/59.png" afterPath="$PROJECT_DIR$/img_tmp/59.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/6.png" afterPath="$PROJECT_DIR$/img_tmp/6.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/60.png" afterPath="$PROJECT_DIR$/img_tmp/60.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/61.png" afterPath="$PROJECT_DIR$/img_tmp/61.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/62.png" afterPath="$PROJECT_DIR$/img_tmp/62.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/63.png" afterPath="$PROJECT_DIR$/img_tmp/63.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/64.png" afterPath="$PROJECT_DIR$/img_tmp/64.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/65.png" afterPath="$PROJECT_DIR$/img_tmp/65.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/66.png" afterPath="$PROJECT_DIR$/img_tmp/66.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/67.png" afterPath="$PROJECT_DIR$/img_tmp/67.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/68.png" afterPath="$PROJECT_DIR$/img_tmp/68.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/69.png" afterPath="$PROJECT_DIR$/img_tmp/69.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/7.png" afterPath="$PROJECT_DIR$/img_tmp/7.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/70.png" afterPath="$PROJECT_DIR$/img_tmp/70.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/71.png" afterPath="$PROJECT_DIR$/img_tmp/71.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/72.png" afterPath="$PROJECT_DIR$/img_tmp/72.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/73.png" afterPath="$PROJECT_DIR$/img_tmp/73.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/74.png" afterPath="$PROJECT_DIR$/img_tmp/74.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/75.png" afterPath="$PROJECT_DIR$/img_tmp/75.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/76.png" afterPath="$PROJECT_DIR$/img_tmp/76.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/77.png" afterPath="$PROJECT_DIR$/img_tmp/77.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/78.png" afterPath="$PROJECT_DIR$/img_tmp/78.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/79.png" afterPath="$PROJECT_DIR$/img_tmp/79.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/8.png" afterPath="$PROJECT_DIR$/img_tmp/8.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/80.png" afterPath="$PROJECT_DIR$/img_tmp/80.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/81.png" afterPath="$PROJECT_DIR$/img_tmp/81.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/82.png" afterPath="$PROJECT_DIR$/img_tmp/82.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/83.png" afterPath="$PROJECT_DIR$/img_tmp/83.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/84.png" afterPath="$PROJECT_DIR$/img_tmp/84.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/85.png" afterPath="$PROJECT_DIR$/img_tmp/85.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/86.png" afterPath="$PROJECT_DIR$/img_tmp/86.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/87.png" afterPath="$PROJECT_DIR$/img_tmp/87.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/88.png" afterPath="$PROJECT_DIR$/img_tmp/88.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/89.png" afterPath="$PROJECT_DIR$/img_tmp/89.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/9.png" afterPath="$PROJECT_DIR$/img_tmp/9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_tmp/90.png" afterPath="$PROJECT_DIR$/img_tmp/90.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Camera.py" afterPath="$PROJECT_DIR$/Camera.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LoginDialog.py" afterPath="$PROJECT_DIR$/LoginDialog.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataProcessing.py" afterPath="$PROJECT_DIR$/DataProcessing.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainWindow.py" afterPath="$PROJECT_DIR$/MainWindow.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyUI.py" afterPath="$PROJECT_DIR$/MyUI.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestRoi.py" afterPath="$PROJECT_DIR$/TestRoi.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThreeDimension.py" afterPath="$PROJECT_DIR$/ThreeDimension.py" />
     </list>
     <ignored path="BaoSteel.iws" />
@@ -24,14 +113,14 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/BaoSteel$TestGetWaveHeight.coverage" NAME="TestGetWaveHeight Coverage Results" MODIFIED="1462340105967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BaoSteel$TestRoi.coverage" NAME="TestRoi Coverage Results" MODIFIED="1462434544702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BaoSteel$TestRoi.coverage" NAME="TestRoi Coverage Results" MODIFIED="1462607984883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BaoSteel$ThreeDimension.coverage" NAME="ThreeDimension Coverage Results" MODIFIED="1462430710878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BaoSteel$TestCannyPara.coverage" NAME="TestCannyPara Coverage Results" MODIFIED="1458879680176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BaoSteel$TmpLinearFit.coverage" NAME="TmpLinearFit Coverage Results" MODIFIED="1462341129085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BaoSteel$TestFFt.coverage" NAME="TestFFt Coverage Results" MODIFIED="1459312640725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BaoSteel$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1461550606966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BaoSteel$JustTest.coverage" NAME="JustTest Coverage Results" MODIFIED="1462346390561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BaoSteel$main.coverage" NAME="main Coverage Results" MODIFIED="1462529553484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BaoSteel$main.coverage" NAME="main Coverage Results" MODIFIED="1462611031117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BaoSteel$Camera.coverage" NAME="Camera Coverage Results" MODIFIED="1452743769609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BaoSteel$TestUnicode.coverage" NAME="TestUnicode Coverage Results" MODIFIED="1461550602837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BaoSteel$TestWavePeakProcess.coverage" NAME="TestWavePeakProcess Coverage Results" MODIFIED="1453199945907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -47,57 +136,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainWindow.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainWindow.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainWindow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
+            <state relative-caret-position="956">
+              <caret line="157" column="33" selection-start-line="157" selection-start-column="33" selection-end-line="157" selection-end-column="33" />
               <folding>
                 <element signature="e#41#51#0" expanded="true" />
-                <element signature="e#8147#8338#0" expanded="false" />
+                <element signature="e#446#1232#0" expanded="false" />
+                <element signature="e#1270#1743#0" expanded="false" />
+                <element signature="e#1790#1814#0" expanded="false" />
+                <element signature="e#1849#2570#0" expanded="false" />
+                <element signature="e#2605#2954#0" expanded="false" />
+                <element signature="e#2995#3143#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vimbacamera.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/vimbacamera.py">
+      <file leaf-file-name="DataProcessing.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DataProcessing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="105" column="25" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vimbaexception.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/vimbaexception.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginDialog.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LoginDialog.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Camera.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Camera.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+            <state relative-caret-position="-1522">
+              <caret line="272" column="33" selection-start-line="272" selection-start-column="33" selection-end-line="272" selection-end-column="33" />
               <folding>
-                <element signature="e#345#389#0" expanded="false" />
-                <element signature="e#2883#2904#0" expanded="false" />
+                <element signature="e#42#60#0" expanded="true" />
+                <element signature="e#424#600#0" expanded="false" />
+                <element signature="e#833#955#0" expanded="false" />
+                <element signature="e#1004#1133#0" expanded="false" />
+                <element signature="e#1191#1868#0" expanded="false" />
+                <element signature="e#1948#3891#0" expanded="false" />
+                <element signature="e#3958#4158#0" expanded="false" />
+                <element signature="e#4191#4505#0" expanded="false" />
+                <element signature="e#5671#7164#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyThread.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MyThread.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+              <folding>
+                <element signature="e#42#58#0" expanded="true" />
+                <element signature="e#1042#1665#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -106,11 +190,24 @@
       <file leaf-file-name="ThreeDimension.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ThreeDimension.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+            <state relative-caret-position="176">
+              <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
               <folding>
                 <element signature="e#41#72#0" expanded="true" />
-                <element signature="e#2246#2607#0" expanded="false" />
+                <element signature="e#1716#2077#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Camera.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Camera.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="164">
+              <caret line="44" column="56" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="56" />
+              <folding>
+                <element signature="e#42#52#0" expanded="true" />
+                <element signature="e#503#1085#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -147,22 +244,24 @@
         <option value="$PROJECT_DIR$/res/MyUI.py" />
         <option value="$PROJECT_DIR$/TestCannyPara.py" />
         <option value="$PROJECT_DIR$/TestFFt.py" />
-        <option value="C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/__init__.py" />
         <option value="$PROJECT_DIR$/TestUnicode.py" />
         <option value="$PROJECT_DIR$/LoginUI.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/vimbadll.py" />
         <option value="$PROJECT_DIR$/ImageProcessing.py" />
         <option value="$PROJECT_DIR$/TestGetWaveHeight.py" />
         <option value="$PROJECT_DIR$/TmpLinearFit.py" />
         <option value="$PROJECT_DIR$/JustTest.py" />
         <option value="$PROJECT_DIR$/MyUI.py" />
-        <option value="$PROJECT_DIR$/DataProcessing.py" />
-        <option value="$PROJECT_DIR$/TestRoi.py" />
-        <option value="$PROJECT_DIR$/ThreeDimension.py" />
         <option value="$PROJECT_DIR$/LoginDialog.py" />
-        <option value="$PROJECT_DIR$/Camera.py" />
+        <option value="C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/vimbadll.py" />
+        <option value="$PROJECT_DIR$/ThreeDimension.py" />
+        <option value="C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/__init__.py" />
+        <option value="C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/vimba.py" />
         <option value="$PROJECT_DIR$/MainWindow.py" />
+        <option value="$PROJECT_DIR$/Camera.py" />
+        <option value="$PROJECT_DIR$/TestRoi.py" />
+        <option value="$PROJECT_DIR$/DataProcessing.py" />
+        <option value="$PROJECT_DIR$/MyThread.py" />
       </list>
     </option>
   </component>
@@ -217,19 +316,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-        <subPane subId="Changed Files" />
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Default" />
-      </pane>
       <pane id="Scratches">
         <subPane>
           <PATH>
@@ -247,6 +333,19 @@
             </PATH_ELEMENT>
           </PATH>
         </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Changed Files" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Default" />
       </pane>
       <pane id="ProjectPane">
         <subPane>
@@ -266,12 +365,30 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BaoSteel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="no2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MainWindow.py" />
+              <option name="myItemType" value="com.jetbrains.python.projectView.PyFileNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MainUI" />
+              <option name="myItemType" value="com.jetbrains.python.projectView.PyElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/Program Files (x86)/Python/Scripts/pymba-master/pymba/tests" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
@@ -618,7 +735,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21961933" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -627,7 +744,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17364341" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24496125" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496474" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -654,6 +771,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/vimbadll.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -661,69 +785,23 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="70" />
+      <option name="time" value="74" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ImageProcessing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#718#1436#0" expanded="false" />
-            <element signature="e#1529#2606#0" expanded="false" />
-            <element signature="e#2713#2825#0" expanded="false" />
-            <element signature="e#2889#3709#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainWindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#41#51#0" expanded="true" />
-            <element signature="e#8147#8338#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ImageProcessing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="94" column="39" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
-          <folding>
-            <element signature="e#718#1436#0" expanded="false" />
-            <element signature="e#1529#2606#0" expanded="false" />
-            <element signature="e#2713#2825#0" expanded="false" />
-            <element signature="e#2889#3709#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MainWindow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
           <folding>
             <element signature="e#41#51#0" expanded="true" />
-            <element signature="e#8147#8338#0" expanded="false" />
+            <element signature="e#446#1232#0" expanded="false" />
+            <element signature="e#1270#1743#0" expanded="false" />
+            <element signature="e#1790#1814#0" expanded="false" />
+            <element signature="e#1849#2570#0" expanded="false" />
+            <element signature="e#2605#2954#0" expanded="false" />
+            <element signature="e#2995#3143#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -748,7 +826,12 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#41#51#0" expanded="true" />
-            <element signature="e#8147#8338#0" expanded="false" />
+            <element signature="e#446#1232#0" expanded="false" />
+            <element signature="e#1270#1743#0" expanded="false" />
+            <element signature="e#1790#1814#0" expanded="false" />
+            <element signature="e#1849#2570#0" expanded="false" />
+            <element signature="e#2605#2954#0" expanded="false" />
+            <element signature="e#2995#3143#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -780,7 +863,12 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#41#51#0" expanded="true" />
-            <element signature="e#8147#8338#0" expanded="false" />
+            <element signature="e#446#1232#0" expanded="false" />
+            <element signature="e#1270#1743#0" expanded="false" />
+            <element signature="e#1790#1814#0" expanded="false" />
+            <element signature="e#1849#2570#0" expanded="false" />
+            <element signature="e#2605#2954#0" expanded="false" />
+            <element signature="e#2995#3143#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -794,13 +882,6 @@
     <entry file="file://D:/Program Files/Python2.7/pymba-master/build/lib/pymba/vimbacamera.py" />
     <entry file="file://D:/Program Files/Python2.7/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/vimbacamera.py" />
     <entry file="file://D:/Program Files/Python2.7/Lib/site-packages/qimage2ndarray/__init__.py" />
-    <entry file="file://C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TestFFt.py" />
     <entry file="file://$PROJECT_DIR$/TestCannyPara.py" />
     <entry file="file://$PROJECT_DIR$/TestUnicode.py" />
@@ -837,20 +918,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/vimbafeature.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="133" column="31" selection-start-line="133" selection-start-column="31" selection-end-line="133" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/vimbadll.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="213" column="42" selection-start-line="213" selection-start-column="42" selection-end-line="213" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -905,24 +972,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataProcessing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="293" column="40" selection-start-line="293" selection-start-column="40" selection-end-line="293" selection-end-column="40" />
-          <folding>
-            <element signature="e#42#60#0" expanded="true" />
-            <element signature="e#408#584#0" expanded="false" />
-            <element signature="e#817#939#0" expanded="false" />
-            <element signature="e#988#1117#0" expanded="false" />
-            <element signature="e#1175#1852#0" expanded="false" />
-            <element signature="e#1932#3875#0" expanded="false" />
-            <element signature="e#3942#4142#0" expanded="false" />
-            <element signature="e#4175#4489#0" expanded="false" />
-            <element signature="e#5655#7148#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyUI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
@@ -931,41 +980,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TestRoi.py">
+    <entry file="file://C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/vimbadll.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+        <state relative-caret-position="293">
+          <caret line="26" column="27" selection-start-line="26" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThreeDimension.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
-          <folding>
-            <element signature="e#41#72#0" expanded="true" />
-            <element signature="e#2246#2607#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LoginDialog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Camera.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
-          <folding>
-            <element signature="e#345#389#0" expanded="false" />
-            <element signature="e#2883#2904#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -985,13 +1004,134 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/LoginDialog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Python/Lib/atexit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Python/Lib/site-packages/qimage2ndarray/qimageview_python.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2016.1/system/python_stubs/-1183982014/datetime.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1401">
+          <caret line="164" column="12" selection-start-line="164" selection-start-column="4" selection-end-line="164" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/vimbafeature.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="102" column="22" selection-start-line="102" selection-start-column="8" selection-end-line="102" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Python/Lib/site-packages/pymba-0.1-py2.7.egg/pymba/vimba.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="261" column="25" selection-start-line="261" selection-start-column="25" selection-end-line="261" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestRoi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+          <folding>
+            <element signature="e#42#55#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Camera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="44" column="56" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="56" />
+          <folding>
+            <element signature="e#42#52#0" expanded="true" />
+            <element signature="e#503#1085#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataProcessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1522">
+          <caret line="272" column="33" selection-start-line="272" selection-start-column="33" selection-end-line="272" selection-end-column="33" />
+          <folding>
+            <element signature="e#42#60#0" expanded="true" />
+            <element signature="e#424#600#0" expanded="false" />
+            <element signature="e#833#955#0" expanded="false" />
+            <element signature="e#1004#1133#0" expanded="false" />
+            <element signature="e#1191#1868#0" expanded="false" />
+            <element signature="e#1948#3891#0" expanded="false" />
+            <element signature="e#3958#4158#0" expanded="false" />
+            <element signature="e#4191#4505#0" expanded="false" />
+            <element signature="e#5671#7164#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThreeDimension.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <folding>
+            <element signature="e#41#72#0" expanded="true" />
+            <element signature="e#1716#2077#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MainWindow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
+        <state relative-caret-position="956">
+          <caret line="157" column="33" selection-start-line="157" selection-start-column="33" selection-end-line="157" selection-end-column="33" />
           <folding>
             <element signature="e#41#51#0" expanded="true" />
-            <element signature="e#8147#8338#0" expanded="false" />
+            <element signature="e#446#1232#0" expanded="false" />
+            <element signature="e#1270#1743#0" expanded="false" />
+            <element signature="e#1790#1814#0" expanded="false" />
+            <element signature="e#1849#2570#0" expanded="false" />
+            <element signature="e#2605#2954#0" expanded="false" />
+            <element signature="e#2995#3143#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyThread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+          <folding>
+            <element signature="e#42#58#0" expanded="true" />
+            <element signature="e#1042#1665#0" expanded="false" />
           </folding>
         </state>
       </provider>

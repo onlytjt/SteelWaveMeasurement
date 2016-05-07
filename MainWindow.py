@@ -89,20 +89,23 @@ class MainUI(QMainWindow, Ui_MainWindow):
 
     def initCamera(self):
         self.ci = Camera.CameraInterface()  # 获取界面中的相机接口
-        self.ci.initCamera()
-        self.ci.initAttribute()
-        self.ci.getOneFrame()
-        ip = ImageProcessing.ImageProcessing(self.ci.imgData)
+        self.ci.openCamera()
+        self.ci.setAttribute()
+        firstFrame = self.ci.getFirstFrame()
+        ip = ImageProcessing.ImageProcessing(firstFrame)
         if ip.doHoughTrans():
             self.HOUGH_LINE_Y = ip.C
         else:
-            self.HOUGH_LINE_Y = 0
+            self.HOUGH_LINE_Y = self.IMG_HEIGHT/2
+
+        self.ci.setRoi(self.ROIRANGE, ip.C-self.ROIRANGE/2)
+        self.ci.startCapture()
 
     def onTimerShowImage(self):
-        oriImg = self.ci.getOneFrame()  # 采集图像
-        cutImg = oriImg[self.HOUGH_LINE_Y-self.ROIRANGE/2: self.HOUGH_LINE_Y+self.ROIRANGE/2, :]
-        self.displayOriImg(cutImg)  # 显示原始图像
-        self.displayEdgeImg(cutImg)  # 显示边缘图像
+        self.ci.getOneFrame()  # 采集图像
+        img = self.ci.img
+        self.displayOriImg(img)  # 显示原始图像
+        self.displayEdgeImg(img)  # 显示边缘图像
 
 
     def displayOriImg(self, oriImg):  # 原始图像区域的处理
@@ -198,15 +201,18 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.btn_start_system.setDisabled(True)
         self.initCamera()
         # time.sleep(5)
-        self.timerShowImage.start(100)
+        self.timerShowImage.start(50)
         self.isMeasuring = 0  # 0-未测量，待机状态。1-自动测量中。2-演示模式。
 
     def onClickedBtnCloseSystem(self):
+        # print "valid frame:", self.ci.cntValidFrame
+        # print "dropped frame:", self.ci.cntDropFrame
         self.timerShowImage.stop()
         print "Timer timerShowImage has been closed"
         self.ci.closeCamera()
         print "Camera has been closed"
         QCoreApplication.instance().quit()
+        print "total time:", self.ci.timeStopCapture - self.ci.timeStartCapture
 
     def onClickedBtnSaveFile(self):
         self.timerShowImage.stop()
@@ -235,7 +241,7 @@ class MainUI(QMainWindow, Ui_MainWindow):
         f.close()
         saved = QMessageBox.information(None, "Saved", u"数据已保存完毕")
         if saved == QMessageBox.Ok:
-            self.timerShowImage.start(100)
+            self.timerShowImage.start(50)
 
 
     def onClickedBtnShowMode(self):
@@ -248,8 +254,8 @@ class MainUI(QMainWindow, Ui_MainWindow):
 
 
     def onClickedBtnFocus(self):
-        img = self.ci.getOneFrame()
-        ip = ImageProcessing.ImageProcessing(img)
+        self.ci.getOneFrame()
+        ip = ImageProcessing.ImageProcessing(self.ci.img)
         ip.doHoughTrans()
         self.HOUGH_LINE_Y = ip.C
 

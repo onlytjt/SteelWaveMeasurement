@@ -12,6 +12,7 @@ import matplotlib
 from sklearn import linear_model
 import ImageProcessing
 import datetime
+import MyThread
 
 
 # 将得到的所有波高值，截取某个值一下的噪点
@@ -253,23 +254,23 @@ def peakPointToWavePara(peakTopCurve, peakBottomCurve, topCurve, bottomCurve, cn
     '''=========处理波高值==========='''
     '''处理上方曲线的波高信息'''
     # matplotlib.use("Agg")
-    # p1 = plt.subplot(111)
+    # p1 = plt.subplot(121)
     # print "Top Curve 纵坐标方差: ", np.var(peakTopCurve, axis=0)[1]
     if peakTopCurve.shape[0] == 0:  # 没有极值点的情况，直接赋值在曲线中的最大值
         boundTopCurve = max(topCurve)
     else:  # 输入找到了有效的极值点
         if np.var(peakTopCurve, axis=0)[1] < 5:
             boundTopCurve = peakTopCurve.mean(axis=0)[1]
-            # xShowTop = [0, len(topCurve)-1]
-            # yShowTop = [boundTopCurve] * 2
+            xShowTop = [0, len(topCurve)-1]
+            yShowTop = [boundTopCurve] * 2
         else:  # 当纵坐标方差较大时，需要进行斜线的拟合
             clfTop = linear_model.LinearRegression()
             X = peakTopCurve[:, 0][:, np.newaxis]
             y = peakTopCurve[:, 1]
             clfTop.fit(X, y)
             boundTopCurve = clfTop.predict(len(topCurve)/2)[0]
-        #     xShowTop = np.array(range(len(topCurve)))[:, np.newaxis]
-        #     yShowTop = clfTop.predict(xShowTop)
+            xShowTop = np.array(range(len(topCurve)))[:, np.newaxis]
+            yShowTop = clfTop.predict(xShowTop)
         # p1.plot(xShowTop, yShowTop)
     # print "boundTopCurve: ", boundTopCurve
     '''处理下方曲线的波高信息'''
@@ -279,16 +280,16 @@ def peakPointToWavePara(peakTopCurve, peakBottomCurve, topCurve, bottomCurve, cn
     else:
         if np.var(peakBottomCurve, axis=0)[1] < 5:
             boundBottomCurve = peakBottomCurve.mean(axis=0)[1]
-            # xShowBottom = [0, len(bottomCurve) - 1]
-            # yShowBottom = [boundBottomCurve] * 2
+            xShowBottom = [0, len(bottomCurve) - 1]
+            yShowBottom = [boundBottomCurve] * 2
         else:  # 当纵坐标方差较大时，需要进行斜线的拟合
             clfBottom = linear_model.LinearRegression()
             X = peakBottomCurve[:, 0][:, np.newaxis]
             y = peakBottomCurve[:, 1]
             clfBottom.fit(X, y)
             boundBottomCurve = clfBottom.predict(len(bottomCurve)/2)[0]
-        #     xShowBottom = np.array(range(len(bottomCurve)))[:, np.newaxis]
-        #     yShowBottom = clfBottom.predict(xShowBottom)
+            xShowBottom = np.array(range(len(bottomCurve)))[:, np.newaxis]
+            yShowBottom = clfBottom.predict(xShowBottom)
         # p1.plot(xShowBottom, yShowBottom)
     # print "boundBottomCurve: ", boundBottomCurve
     waveHeight = boundTopCurve - boundBottomCurve
@@ -336,6 +337,9 @@ def peakPointToWavePara(peakTopCurve, peakBottomCurve, topCurve, bottomCurve, cn
     savefig("./img_tmp/" + str(cnt) + ".png")
     plt.clf()
     '''
+    plotRuntimeWave = MyThread.PlotRuntimeWaveThread(
+        topCurve, bottomCurve, xShowTop, yShowTop, xShowBottom, yShowBottom, cnt)
+    plotRuntimeWave.start()
     return waveHeight, waveLength
 
 

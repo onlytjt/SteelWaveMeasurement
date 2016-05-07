@@ -6,6 +6,7 @@ import numpy as np
 import time
 from pymba import *
 from ImageProcessing import *
+import datetime
 
 # CameraInterface类使用说明:
 # 首先调用initCamera()函数打开vimba，并获取相机句柄
@@ -14,90 +15,92 @@ from ImageProcessing import *
 
 class CameraInterface:
     def __init__(self):
-        self.WIDTH = 2452
-        self.HEIGHT = 2056
+        self.WIDTH = 2048
+        self.HEIGHT = 1088
+        self.cntValidFrame = 0
+        self.cntDropFrame = []
 
-    def initCamera(self):
-        self.vimba = Vimba()
-        self.vimba.startup()  # 启用vimba驱动程序,获取vimba的句柄
-        print "Vimba run successfully! Version: ", self.vimba.getVersion()  # 打印当前使用vimba版本信息
-        system = self.vimba.getSystem()
+    def openCamera(self):
+        vimba = Vimba()
+        vimba.startup()  # 启用vimba驱动程序,获取vimba的句柄
+        print "Vimba run successfully! Version: ", vimba.getVersion()  # 打印当前使用vimba版本信息
+        system = vimba.getSystem()
         system.runFeatureCommand("GeVDiscoveryAllOnce")  # enabling discovery for GigE cameras
         time.sleep(0.2)
-        cameraIds = self.vimba.getCameraIds()
+        cameraIds = vimba.getCameraIds()
         print "Available cameras: ", cameraIds  # 列出所有可用相机的ID
-        self.camera = self.vimba.getCamera(cameraIds[0])  # 得到相机的相机句柄，用于后续各种操作
+        self.camera = vimba.getCamera(cameraIds[0])  # 得到相机的相机句柄，用于后续各种操作
         self.camera.openCamera()
         print "Camera: ", cameraIds, "has opened successfully!"
 
-    def initAttribute(self):
+    def setAttribute(self, mode="SingleFrame"):
+        try:  # 设置千兆网的传输速率
+            print "GevSCPSPacketSize:", self.camera.GevSCPSPacketSize
+            print "StreamBytesPerSecond:", self.camera.StreamBytesPerSecond
+            self.camera.StreamBytesPerSecond = 100000000
+        except:
+            print "当前相机不是千兆网"
+
         print "CameraFeature: ", self.camera.AcquisitionMode  # 列出相机当前设置
-        # print self.camera._handle._dist_
-        self.camera.AcquisitionMode = 'SingleFrame'  # 设置相机的帧采集模式
+        self.camera.AcquisitionMode = mode  # 设置相机的帧采集模式
+        # self.camera.AcquisitionMode = 'SingleFrame'  # 设置相机的帧采集模式
         # self.camera.AcquisitionMode = 'Continuous'  # 设置相机的帧采集模式
 
-        # 使用G223时，由于帧率足够，不对相机设置ROI，获取整幅图像后剪裁
-        # offsetY = VimbaFeature("OffsetY", self.camera._handle)
-        # offsetY._setIntFeature(0)
-        # height = VimbaFeature("Height", self.camera._handle)
-        # height._setIntFeature(1088)  # 每次重启相机都将设置回复为默认值
+    def startCapture(self):
+        self.camera.startCapture()
+        self.timeStartCapture = datetime.datetime.now()
 
-        self.frame0 = self.camera.getFrame()
-        self.frame1 = self.camera.getFrame()
-        self.frame0.announceFrame()  # 为frame声明内存
 
-    def setROI(self, roiRange=1088, offset=0):
+    def setRoiToDefault(self):  # 从区域较小图像设置到较大图像
         offsetY = VimbaFeature("OffsetY", self.camera._handle)
-        offsetY._setIntFeature(offset)
+        print "offsetY:", offsetY._getIntFeature()
+        offsetY._setIntFeature(0)
         height = VimbaFeature("Height", self.camera._handle)
-        height._setIntFeature(roiRange)
-        self.frame0 = self.camera.getFrame()
-        self.frame0.announceFrame()  # 为frame声明内存
+        print "Height:", height._getIntFeature()
+        height._setIntFeature(1088)
+        self.frame = self.camera.getFrame()
+        self.frame.announceFrame()
+
+    def setRoi(self, roirange, offset):  # 从区域较大图像设置到较小图像
+        height = VimbaFeature("Height", self.camera._handle)
+        print "Height:", height._getIntFeature()
+        height._setIntFeature(roirange)
+        offsetY = VimbaFeature("OffsetY", self.camera._handle)
+        print "offsetY:", offsetY._getIntFeature()
+        offsetY._setIntFeature(offset)
+        self.frame = self.camera.getFrame()
+        self.frame.announceFrame()
+
+    def getFirstFrame(self):
+        self.setRoiToDefault()
+        self.camera.startCapture()
+        self.getOneFrame()
+        self.camera.endCapture()
+        self.camera.revokeAllFrames()
+        return self.img
 
     def getOneFrame(self):
-        self.camera.startCapture()
-        self.frame0.queueFrameCapture()
+        try:
+            self.frame.queueFrameCapture()
+            isCaptured = True
+        except:
+            # self.cntDropFrame.append(self.cntValidFrame)
+            isCaptured = False
+
         self.camera.runFeatureCommand('AcquisitionStart')
         self.camera.runFeatureCommand('AcquisitionStop')
-        self.frame0.waitFrameCapture()
-        # imgData = self.frame0.getBufferByteData()
-        moreUsefulImgData = np.ndarray(buffer=self.frame0.getBufferByteData(),
-                                   dtype=np.uint8,
-                                   shape=(self.frame0.height, self.frame0.width))  # numpy的ndarray进行方便进行处理
-        # print "moreUsefulImgData shape:", moreUsefulImgData.shape
-        self.camera.endCapture()
-        self.camera.revokeAllFrames()  # 获取图像完毕后，清理内存
-        self.imgData = moreUsefulImgData
-        return moreUsefulImgData
+        self.frame.waitFrameCapture(1000)
+        imgData = self.frame.getBufferByteData()
+        if isCaptured:
+            # self.cntValidFrame += 1
+            moreUsefulImgData = np.ndarray(buffer=imgData,
+                                       dtype=np.uint8,
+                                       shape=(self.frame.height, self.frame.width))  # numpy的ndarray进行方便进行处理
+            self.img = moreUsefulImgData
+
 
     def closeCamera(self):
-        self.vimba.shutdown()
-
-def main():
-    ROIRANGE = 300
-    ci = CameraInterface()
-    ci.initCamera()
-    ci.initAttribute()
-    testImg = ci.getOneFrame()
-    ip = ImageProcessing(testImg)
-    ip.doHoughTrans()
-    ci.setROI(roiRange=ROIRANGE, offset=ip.C-ROIRANGE/2)
-    while True:
-        img = ci.getOneFrame()
-        ip1 = ImageProcessing(img)
-        cv2.imshow("ori", img)
-        cv2.imshow("canny", ip1.cannyImg)
-        cv2.imshow("binary", ip1.binaryBlurImg)
-        if cv2.waitKey(1) == 27:
-            break
-    cv2.destroyAllWindows()
-
-if __name__ == '__main__':
-    main()
-
-# while True:
-#         ins.captureFrame()
-#         ins.showImage()
-#         if cv2.waitKey(1) == 27: # press esc to quit
-#             break
-#     ins.endShow()
+        self.camera.endCapture()
+        self.camera.revokeAllFrames()
+        self.camera.closeCamera()
+        self.timeStopCapture = datetime.datetime.now()
