@@ -98,6 +98,9 @@ class CameraInterface:
                                        shape=(self.frame.height, self.frame.width))  # numpy的ndarray进行方便进行处理
             self.img = moreUsefulImgData
 
+    def endCapture(self):
+        self.camera.endCapture()
+        self.camera.revokeAllFrames()  # 在每次重新设置ROI，生命frame之前，需要先将之前的frame都取消
 
     def closeCamera(self):
         self.camera.endCapture()

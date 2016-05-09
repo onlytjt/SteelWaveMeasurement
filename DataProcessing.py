@@ -42,7 +42,7 @@ def smoothFilter5(ori):
 
 # 对数据进行FFT变换并滤波
 def fftFilter(inputList):
-    FFT_Threshold = 10
+    FFT_Threshold = 30
     fftData = fft(inputList)
     fftData[FFT_Threshold:] = 0
     result = abs(ifft(fftData))

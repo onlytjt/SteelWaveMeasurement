@@ -161,18 +161,19 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.indexRecordToExcel += 1
         # self.recordWaveHeight()  # 将所有波高、波长值记录，为后面标定和论文
         # self.recordWaveLength()
+        waveHeightFFT = dp.fftFilter(self.waveHeightList)
         bigWaveHeight, smallWaveHeight, bigWaveLength, smallWaveLength, peakBigWave, peakSmallWave \
             = td.buildWaveModel(self.waveHeightList, self.waveLengthList)
         self.updateTableWidget(bigWaveHeight, smallWaveHeight, bigWaveLength, smallWaveLength)
 
-        p1 = plt.subplot(111)
+        p1 = plt.subplot(211)
         p1.scatter(range(len(self.waveHeightList)), self.waveHeightList, s=1, c="b")
         p1.scatter(peakBigWave[:, 0], peakBigWave[:, 1], s=100, c="r", marker="v")
         p1.scatter(peakSmallWave[:, 0], peakSmallWave[:, 1], s=100, c="g", marker="v")
         p1.plot(self.waveHeightList, "r")
-        # p2 = plt.subplot(212)
-        # p2.scatter(range(len(self.waveLengthList)), self.waveLengthList, s=10, c="b")
-        # p2.plot(self.waveLengthList, "r")
+        p2 = plt.subplot(212)
+        p2.scatter(range(len(self.waveLengthList)), self.waveLengthList, s=1, c="b")
+        p2.plot(self.waveLengthList, "r")
         plt.show()
 
     def updateTableWidget(self, bigWaveHeight, smallWaveHeight, bigWaveLength, smallWaveLength):
@@ -267,13 +268,14 @@ class MainUI(QMainWindow, Ui_MainWindow):
             self.SHOW_COUNT = False
             self.isMeasuring = 0
 
-
     def onClickedBtnFocus(self):
+        self.ci.setRoiToDefault()
         self.ci.getOneFrame()
+        self.ci.endCapture()
         ip = ImageProcessing.ImageProcessing(self.ci.img)
         ip.doHoughTrans()
-        self.HOUGH_LINE_Y = ip.C
-
+        self.ci.setRoi(self.ROIRANGE, ip.C - self.ROIRANGE/2)
+        self.ci.startCapture()
 
     def onClickedBtnCancel(self):
         self.btn_auto_test.setText(u"自动测量")

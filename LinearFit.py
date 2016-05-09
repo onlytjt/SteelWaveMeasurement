@@ -2,6 +2,7 @@ import numpy as np
 from sklearn import linear_model
 import matplotlib.pyplot as plt
 
+
 def main():
     pixel = []
     f1 = open("./data/pixel.txt", "r")
@@ -27,5 +28,14 @@ def main():
     plt.plot(pixel, y_pred, "r")
     plt.show()
 
+def test():
+    x = np.array(range(600))
+    y1 = x * 1.816 + 2046.33
+    y2 = x * 0.942 + 2366.73
+    plt.plot(y1, "r")
+    plt.plot(y2, "b")
+    plt.show()
+
+
 if __name__ == '__main__':
-    main()
+    test()

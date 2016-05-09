@@ -12,12 +12,18 @@ def buildWaveModel(height, length):
     length = dp.smoothFilter(length)  # 三点平滑滤波后再使用数据
 
     '''=========处理波高值==========='''
-    maxTab, minTab = dp.peakdet(height, 0.5)  # 提取图像中所有的极值点，并去除第一个点
+    maxTab, minTab = dp.peakdet(height, 0.1)  # 提取图像中所有的极值点，并去除第一个点
     peakInHeight = [row for row in maxTab if row[0] != 0]
     avePeakHeight = np.array(peakInHeight).mean(axis=0)[1]
 
     peakBigWave = np.array([row for row in peakInHeight if row[1] > avePeakHeight])  # 大小波极值点分离
     peakSmallWave = np.array([row for row in peakInHeight if row[1] < avePeakHeight])
+
+    # 将FFT波形得到的极值点转化为原波高值曲线中的极值点
+    # peakBigWaveFFT = np.array([row for row in peakInHeight if row[1] > avePeakHeight])  # 大小波极值点分离
+    # peakSmallWaveFFT = np.array([row for row in peakInHeight if row[1] < avePeakHeight])
+    # peakBigWave = np.array([[int(i), height[int(i)]] for i in peakBigWaveFFT[:, 0]])
+    # peakSmallWave = np.array([[int(i), height[int(i)]] for i in peakSmallWaveFFT[:, 0]])
 
     bigWaveHeight = peakBigWave.mean(axis=0)[1]  # 计算大小波的波高像素值
     smallWaveHeight = peakSmallWave.mean(axis=0)[1]
@@ -43,19 +49,20 @@ def buildWaveModel(height, length):
     bigWaveLength = max(length1, length2)
     smallWaveLength = min(length1, length2)
 
-    # plotResultThread = mt.PlotResultThread(height, peakBigWave, peakSmallWave)
-    # plotResultThread.start()
-
-    print "大波波高像素值:", bigWaveHeight
-    print "小波波高像素值:", smallWaveHeight
-    print "大波波长像素值:", bigWaveLength
-    print "小波波长像素值:", smallWaveLength
+    print "大波波高像素值:", "%0.1f" % bigWaveHeight
+    print "小波波高像素值:", "%0.1f" % smallWaveHeight
+    print "大波波长像素值:", "%0.1f" % bigWaveLength
+    print "小波波长像素值:", "%0.1f" % smallWaveLength
     print "-----------------------------"
 
-    bigWaveHeight = "%0.1f" % (bigWaveHeight*6.6188 - 7.356)
-    smallWaveHeight = (smallWaveHeight*6.6188 - 7.356)*0.3 + (smallWaveHeight*2.474+95.93)*0.7
-    # bigWaveLength = "%0.1f" % (bigWaveLength*0.9857 + 2510.35)
-    # smallWaveLength = "%0.1f" % (smallWaveLength*(-1.6723) + 3657.65)
+    # 像素物理分辨率直线，与大小波分别标定直线
+    bigWaveHeight = (bigWaveHeight*6.6188 - 7.356)*0.5 + (bigWaveHeight*3.236 + 91.611)*0.5
+    bigWaveHeight = "%0.1f" % bigWaveHeight
+    smallWaveHeight = (smallWaveHeight*6.6188 - 7.356)*0.3 + (smallWaveHeight*2.474 + 95.93)*0.7
+    smallWaveHeight = "%0.1f" % smallWaveHeight
+
+    bigWaveLength = "%0.1f" % (bigWaveLength*1.816 + 2046.33)
+    smallWaveLength = "%0.1f" % (smallWaveLength*0.942 + 2366.73)
 
     return bigWaveHeight, smallWaveHeight, bigWaveLength, smallWaveLength, peakBigWave, peakSmallWave
 
