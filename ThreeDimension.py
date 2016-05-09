@@ -49,10 +49,10 @@ def buildWaveModel(height, length, heightFFT):
     bigWaveLength = max(length1, length2)
     smallWaveLength = min(length1, length2)
 
-    print "大波波高像素值:", "%0.1f" % bigWaveHeight
-    print "小波波高像素值:", "%0.1f" % smallWaveHeight
-    print "大波波长像素值:", "%0.1f" % bigWaveLength
-    print "小波波长像素值:", "%0.1f" % smallWaveLength
+    print u"大波波高像素值:", "%0.1f" % bigWaveHeight
+    print u"小波波高像素值:", "%0.1f" % smallWaveHeight
+    print u"大波波长像素值:", "%0.1f" % bigWaveLength
+    print u"小波波长像素值:", "%0.1f" % smallWaveLength
     print "-----------------------------"
 
     # 像素物理分辨率直线，与大小波分别标定直线

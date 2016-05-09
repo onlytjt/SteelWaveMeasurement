@@ -175,7 +175,7 @@ class MainUI(QMainWindow, Ui_MainWindow):
         p1.plot(self.waveHeightList, "r")
 
         p2 = plt.subplot(312)
-        v = [0, 2048, 80, 160]
+        v = [0, 2048, 80, 180]
         topCurveBigWave = self.topCurveBackup[peakBigWave[0, 0]]
         bottomCurveBigWave = self.bottomCurveBackup[peakBigWave[0, 0]]
         p2.scatter(range(len(topCurveBigWave)), topCurveBigWave, s=1, c="b")
