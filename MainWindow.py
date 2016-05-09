@@ -46,11 +46,12 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.realWireDiameter = 110.0
         self.waveHeightList = []
         self.waveLengthList = []
-        self.wireDiameterList = []
         self.indexRecordToExcel = -1  # 用来记录需要记录到表格内的数据个数
         self.SMDList = []
         self.SHOW_COUNT = False
         self.username = "test"
+        self.topCurveBackup = {}
+        self.bottomCurveBackup = {}
 
     def setUsername(self, username):
         self.username = username
@@ -133,7 +134,8 @@ class MainUI(QMainWindow, Ui_MainWindow):
         '''单击【自动测量按钮后】 self.isMeasuring==1的情况'''
         ip = ImageProcessing.ImageProcessing(oriImg)
         topCurve, bottomCurve = dp.getEdgeList(ip.cannyImg)
-        # waveHeightByPeak, waveLengthByPeak = dp.getWaveParaByPeak(topCurve, bottomCurve)
+        self.topCurveBackup[self.cntImgMeasuring] = topCurve
+        self.bottomCurveBackup[self.cntImgMeasuring] = bottomCurve
         waveHeightBySin, waveLengthBySin = dp.getWaveParaBySin(topCurve, bottomCurve)
 
         # 显示钢丝波高的值
@@ -163,17 +165,29 @@ class MainUI(QMainWindow, Ui_MainWindow):
         # self.recordWaveLength()
         waveHeightFFT = dp.fftFilter(self.waveHeightList)
         bigWaveHeight, smallWaveHeight, bigWaveLength, smallWaveLength, peakBigWave, peakSmallWave \
-            = td.buildWaveModel(self.waveHeightList, self.waveLengthList)
+            = td.buildWaveModel(self.waveHeightList, self.waveLengthList, waveHeightFFT)
         self.updateTableWidget(bigWaveHeight, smallWaveHeight, bigWaveLength, smallWaveLength)
 
-        p1 = plt.subplot(211)
+        p1 = plt.subplot(311)
         p1.scatter(range(len(self.waveHeightList)), self.waveHeightList, s=1, c="b")
         p1.scatter(peakBigWave[:, 0], peakBigWave[:, 1], s=100, c="r", marker="v")
         p1.scatter(peakSmallWave[:, 0], peakSmallWave[:, 1], s=100, c="g", marker="v")
         p1.plot(self.waveHeightList, "r")
-        p2 = plt.subplot(212)
-        p2.scatter(range(len(self.waveLengthList)), self.waveLengthList, s=1, c="b")
-        p2.plot(self.waveLengthList, "r")
+
+        p2 = plt.subplot(312)
+        v = [0, 2048, 80, 160]
+        topCurveBigWave = self.topCurveBackup[peakBigWave[0, 0]]
+        bottomCurveBigWave = self.bottomCurveBackup[peakBigWave[0, 0]]
+        p2.scatter(range(len(topCurveBigWave)), topCurveBigWave, s=1, c="b")
+        p2.scatter(range(len(bottomCurveBigWave)), bottomCurveBigWave, s=1, c="b")
+        p2.axis(v)
+
+        p3 = plt.subplot(313)
+        topCurveSmallWave = self.topCurveBackup[peakSmallWave[0, 0]]
+        bottomCurveSmallWave = self.bottomCurveBackup[peakSmallWave[0, 0]]
+        p3.scatter(range(len(topCurveSmallWave)), topCurveSmallWave, s=1, c="b")
+        p3.scatter(range(len(bottomCurveSmallWave)), bottomCurveSmallWave, s=1, c="b")
+        p3.axis(v)
         plt.show()
 
     def updateTableWidget(self, bigWaveHeight, smallWaveHeight, bigWaveLength, smallWaveLength):
@@ -208,7 +222,8 @@ class MainUI(QMainWindow, Ui_MainWindow):
         # 为满足多次重复测量情况，在每次测量前，需要对一些record进行清零操作
         self.waveHeightList = []  # 波高record清零
         self.waveLengthList = []  # 波长record清零
-        self.wireDiameterList = []  # 钢丝直径清零
+        self.topCurveBackup = {}
+        self.bottomCurveBackup = {}
         self.btn_auto_test.setText(u"测量中。。")
         self.btn_auto_test.setDisabled(True)  # 设置按钮无法使用，并改变文字提醒
         self.isMeasuring = 1  # 设置工作状态为【正在测量中】
