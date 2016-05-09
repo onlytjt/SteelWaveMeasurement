@@ -6,6 +6,7 @@ from scipy.fftpack import fft
 from scipy.fftpack import ifft
 from numpy import NaN, Inf, arange, isscalar, asarray, array
 import sys
+from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import savefig
 import matplotlib
@@ -246,7 +247,7 @@ def getWavePeak(inputArray, line="TopCurve"):
 
 # 通过找寻极值点的方法计算出波高和波长值
 # 输入参数为TopCurve与BottomCurve两条曲线的极值点，2d array
-def peakPointToWavePara(peakTopCurve, peakBottomCurve, topCurve, bottomCurve, cnt):
+def peakPointToWavePara(peakTopCurve, peakBottomCurve, topCurve, bottomCurve):
     # 首先应去除极值点中，横坐标为0的点，减少误差出现的可能性
     peakTopCurve = np.array([row for row in peakTopCurve if row[0] != 0])
     peakBottomCurve = np.array([row for row in peakBottomCurve if row[0] != 0])
@@ -337,19 +338,18 @@ def peakPointToWavePara(peakTopCurve, peakBottomCurve, topCurve, bottomCurve, cn
     savefig("./img_tmp/" + str(cnt) + ".png")
     plt.clf()
     '''
-    plotRuntimeWave = MyThread.PlotRuntimeWaveThread(
-        topCurve, bottomCurve, xShowTop, yShowTop, xShowBottom, yShowBottom, cnt)
-    plotRuntimeWave.start()
+    # plotRuntimeWave = MyThread.PlotRuntimeWaveThread(
+    #     topCurve, bottomCurve, xShowTop, yShowTop, xShowBottom, yShowBottom, cnt)
+    # plotRuntimeWave.start()
     return waveHeight, waveLength
 
 
 # 通过波峰极值点方式来计算波形的各种参数
 # 输入参数为截取了ROI的canny和hough的纵坐标值
-def getWaveParaByPeak(cutImg, cnt):
-    topCurve, bottomCurve = imgToList(cutImg)  # 提取上方和下方的两条曲线
-    topCurve = smoothFilter5(topCurve)  # 5点平滑滤波
-    bottomCurve = smoothFilter5(bottomCurve)
 
+
+
+def getWaveParaByPeak(topCurve, bottomCurve):
     maxTabTopCurve, minTabTopCurve = peakdet(topCurve, 0.5)  # 通过函数直接找到极值点，包含了一些噪点。
     maxTabBottomCurve, minTabBottomCurve = peakdet(bottomCurve, 0.5)
 
@@ -357,6 +357,68 @@ def getWaveParaByPeak(cutImg, cnt):
     # peakBottomCurve = getWavePeak(minTabBottomCurve, line="BottomCurve")
     peakTopCurve = maxTabTopCurve
     peakBottomCurve = minTabBottomCurve
-    waveHeight, waveLength = peakPointToWavePara(peakTopCurve, peakBottomCurve, topCurve, bottomCurve, cnt)
+    waveHeight, waveLength = peakPointToWavePara(peakTopCurve, peakBottomCurve, topCurve, bottomCurve)
 
     return waveHeight, waveLength
+
+
+'''
+# 公共函数，将img转化为存储着两条边缘曲线的list
+'''
+def getEdgeList(img):
+    topCurve, bottomCurve = imgToList(img)  # 提取上方和下方的两条曲线
+    topCurve = smoothFilter(topCurve)  # 3点平滑滤波
+    bottomCurve = smoothFilter(bottomCurve)
+    return topCurve, bottomCurve
+
+'''
+# 尝试使用sin拟合来看一下效果
+'''
+def getWaveParaBySin(listTopCurve, listBottomCurve):
+    xTrainTop = np.array(range(len(listTopCurve)))
+    yTrainTop = np.array(listTopCurve)
+    xTrainBottom = np.array(range(len(listBottomCurve)))
+    yTrainBottom = np.array(listBottomCurve)
+
+    yPredTop, top1, bottom1, lengthTop = doSinFit(xTrainTop, yTrainTop)
+    yPredBottom, top2, bottom2, lengthBottom = doSinFit(xTrainBottom, yTrainBottom)
+
+    waveHeight = top1 - bottom2
+    waveLength = (lengthTop + lengthBottom) / 2
+
+    return waveHeight, waveLength
+
+    # print "top1:", top1
+    # print "bottom1:", bottom1
+    # print "top2:", top2
+    # print "bottom2:", bottom2
+    # print "lengthTop:", lengthTop
+    # print "lengthBottom:", lengthBottom
+
+    # plt.scatter(range(len(listTopCurve)), listTopCurve, s=1, c="b")
+    # plt.plot(range(len(yPredTop)), yPredTop, "r")
+    # plt.scatter(range(len(listBottomCurve)), listBottomCurve, s=1, c="b")
+    # plt.plot(range(len(yPredBottom)), yPredBottom, "r")
+    # plt.show()
+
+
+def mySin(x, freq, amp, phase, offset):
+    return amp * np.sin(freq * x + phase) + offset
+
+
+def doSinFit(x, y):
+    guessOffset = np.mean(y)
+    guessFreq = 2.0 * np.pi / 550
+    guessAmp = np.abs(np.max(y - guessOffset))
+    guessPhase = 1.0
+    p0 = [guessFreq, guessAmp,  # 首先要给出一组较为合理的初始值
+          guessPhase, guessOffset]  # 参数的顺序参考数组p0
+    # dataFirstGuess = self.mySin(x, *p0)
+    fit = curve_fit(mySin, x, y, p0=p0)
+    dataFit = mySin(x, *fit[0])
+    # print "original guess p0 is: ", p0
+    # print " p0 is: ", fit[0]
+    top = np.abs(fit[0][1]) + fit[0][3]  # 计算拟合出的sin函数的波峰和波谷的坐标
+    bottom = -np.abs(fit[0][1]) + fit[0][3]
+    length = 2.0 * np.pi / fit[0][0]
+    return dataFit, top, bottom, length

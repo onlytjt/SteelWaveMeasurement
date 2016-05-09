@@ -121,26 +121,7 @@ class ImageProcessing:
         xTrain2 = np.array(xTrain2); yTrain2 = np.array(yTrain2)
         yPred1, top1, bottom1 = self.doSinFit(xTrain1, yTrain1)
         yPred2, top2, bottom2 = self.doSinFit(xTrain2, yTrain2)
-        wireDiameter = (top1+bottom1)/2 - (top2+bottom2)/2
-        waveHeight = top1 - bottom2
-        wireDiameter = float("%0.2f" % wireDiameter)
-        waveHeight = float("%0.2f" % waveHeight)  # 小数格式控制
-        # 通过一个独立窗口显示sin函数拟合结果，使用matplotlib
-        # plt.clf()
-        # plt.scatter(xTrain1, yTrain1, c="r", s=1)
-        # plt.scatter(xTrain2, yTrain2, c="r", s=1)
-        # plt.plot(xTrain1, yPred1, "b")
-        # plt.plot(xTrain2, yPred2, "r")
-        # plt.show(block=False)
-        # plt.pause(0.0001)
-        # print "top1: ", top1
-        # print "bottom2: ", bottom2
-        # 通过分析图像寻找极值的方法得出波长值
-        maxTab, minTab = dp.peakdet(yTrain1, 1)
-        maxLength = dp.getAveWaveLength(maxTab)
-        minLength = dp.getAveWaveLength(minTab)
-        waveLength = (maxLength+minLength) / 2
-        return waveHeight, waveLength, wireDiameter
+
 
     def mySin(self, x, freq, amp, phase, offset):
         return amp * np.sin(freq*x + phase) + offset

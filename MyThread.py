@@ -5,6 +5,8 @@ import threading
 import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import savefig
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
 
 
 class PlotRuntimeWaveThread(threading.Thread):
@@ -30,21 +32,22 @@ class PlotRuntimeWaveThread(threading.Thread):
         plt.clf()
 
 
-class PlotResultThread(threading.Thread):
+class PlotResultThread(QThread):
     def __init__(self, height, peakBigWave, peakSmallWave):
-        threading.Thread.__init__(self)
+        QThread.__init__(self)
         self.height = height
         self.peakBigWave = peakBigWave
         self.peakSmallWave = peakSmallWave
 
     def run(self):
+        plt.clf()
         p1 = plt.subplot(111)
         p1.scatter(range(len(self.height)), self.height, s=10)
-        p1.plot(self.height)
-        for i in range(self.peakBigWave.shape[0]):  # 大波蓝色标注
-            p1.plot([self.peakBigWave[i, 0]] * 2, [15, 30], "b")
-        for i in range(self.peakSmallWave.shape[0]):  # 小波红色标注
-            p1.plot([self.peakSmallWave[i, 0]] * 2, [15, 30], "r")
+        p1.plot(self.height, "r")
+        # for i in range(self.peakBigWave.shape[0]):  # 大波蓝色标注
+        #     p1.plot([self.peakBigWave[i, 0]] * 2, [15, 30], "b")
+        # for i in range(self.peakSmallWave.shape[0]):  # 小波红色标注
+        #     p1.plot([self.peakSmallWave[i, 0]] * 2, [15, 30], "r")
         plt.show()
 
 

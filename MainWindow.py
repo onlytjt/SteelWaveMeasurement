@@ -4,6 +4,7 @@ import sys
 import cv2
 import Camera  # write by tjt
 import time
+import matplotlib.pyplot as plt
 
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
@@ -131,9 +132,13 @@ class MainUI(QMainWindow, Ui_MainWindow):
 
         '''单击【自动测量按钮后】 self.isMeasuring==1的情况'''
         ip = ImageProcessing.ImageProcessing(oriImg)
-        waveHeight, waveLength = dp.getWaveParaByPeak(ip.cannyImg, self.cntImgMeasuring)
+        topCurve, bottomCurve = dp.getEdgeList(ip.cannyImg)
+        # waveHeightByPeak, waveLengthByPeak = dp.getWaveParaByPeak(topCurve, bottomCurve)
+        waveHeightBySin, waveLengthBySin = dp.getWaveParaBySin(topCurve, bottomCurve)
+
         # 显示钢丝波高的值
-        waveShow = "%.1f" % waveHeight
+        waveShow = "%0.1f" % (waveHeightBySin * 6.6188 - 7.356)
+        waveShow += "um"
         self.label_wave_height.setText(QString(str(waveShow)))
         img = cv2.resize(ip.cannyImg, (self.IMG_WIDTH / 2, self.ROIRANGE / 2), cv2.INTER_NEAREST)
         img = q2n.gray2qimage(img)  # 此方法显示会将边缘放大，但实际处理的数据不会改变
@@ -141,8 +146,8 @@ class MainUI(QMainWindow, Ui_MainWindow):
 
         self.cntImgMeasuring += 1
         self.progressBar.setValue(self.cntImgMeasuring)  # 更新进度条当前进度
-        self.waveHeightList.append(waveHeight)
-        self.waveLengthList.append(waveLength)  # 计数器和数据记录
+        self.waveHeightList.append(waveHeightBySin)
+        self.waveLengthList.append(waveLengthBySin)  # 计数器和数据记录
 
         if self.cntImgMeasuring > self.rotatePeriod:  # 测量时间大于设定值
             self.completeMeasure()  # 测量完成进行相应得清零和整理工作
@@ -156,9 +161,19 @@ class MainUI(QMainWindow, Ui_MainWindow):
         self.indexRecordToExcel += 1
         # self.recordWaveHeight()  # 将所有波高、波长值记录，为后面标定和论文
         # self.recordWaveLength()
-        bigWaveHeight, smallWaveHeight, bigWaveLength, smallWaveLength \
+        bigWaveHeight, smallWaveHeight, bigWaveLength, smallWaveLength, peakBigWave, peakSmallWave \
             = td.buildWaveModel(self.waveHeightList, self.waveLengthList)
         self.updateTableWidget(bigWaveHeight, smallWaveHeight, bigWaveLength, smallWaveLength)
+
+        p1 = plt.subplot(111)
+        p1.scatter(range(len(self.waveHeightList)), self.waveHeightList, s=1, c="b")
+        p1.scatter(peakBigWave[:, 0], peakBigWave[:, 1], s=100, c="r", marker="v")
+        p1.scatter(peakSmallWave[:, 0], peakSmallWave[:, 1], s=100, c="g", marker="v")
+        p1.plot(self.waveHeightList, "r")
+        # p2 = plt.subplot(212)
+        # p2.scatter(range(len(self.waveLengthList)), self.waveLengthList, s=10, c="b")
+        # p2.plot(self.waveLengthList, "r")
+        plt.show()
 
     def updateTableWidget(self, bigWaveHeight, smallWaveHeight, bigWaveLength, smallWaveLength):
         self.table.insertRow(self.indexRecordToExcel+1)  # 添加新的一行
